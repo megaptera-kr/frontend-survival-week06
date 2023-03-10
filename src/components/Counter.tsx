@@ -1,15 +1,12 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import useCounterStore from '../hooks/useCounterStore';
 
 export default function Counter() {
-  const [{ count }] = useCounterStore();
+  const [snapshot] = useCounterStore();
 
   return (
     <div>
-      <p>
-        Count:
-        {' '}
-        {count}
-      </p>
+      <p>Count: {snapshot.count}</p>
     </div>
   );
 }
