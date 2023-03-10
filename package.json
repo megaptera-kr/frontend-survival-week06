@@ -4,9 +4,9 @@
   "description": "프론트엔드 생존코스 6주차 과제",
   "source": "index.html",
   "scripts": {
-    "start": "parcel --port 8080",
+    "start": "parcel --port 8081",
     "build": "parcel build --no-source-maps",
-    "serve": "servor dist index.html 8080 --reload",
+    "serve": "servor dist index.html 8081 --reload",
     "check": "tsc --noEmit",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
     "test": "jest",
