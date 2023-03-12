@@ -1,19 +1,35 @@
-import { singleton } from 'tsyringe';
+import Store from './Store';
 
-import { Action, Store } from 'usestore-ts';
+export type CounterStoreSnapshot = {
+  count: number;
+}
 
-@singleton()
-@Store()
-export default class CounterStore {
+export default class CounterStore extends Store<CounterStoreSnapshot> {
   count = 0;
 
-  @Action()
-  increase(step = 1) {
-    this.count += step;
+  constructor() {
+    super();
+    this.takeSnapshot();
   }
 
-  @Action()
+  increase(step = 1) {
+    this.count += step;
+    this.update();
+  }
+
   decrease(step = 1) {
     this.count -= step;
+    this.update();
+  }
+
+  private update() {
+    this.takeSnapshot();
+    this.publish();
+  }
+
+  private takeSnapshot() {
+    this.snapshot = {
+      count: this.count,
+    };
   }
 }
