@@ -9,7 +9,15 @@ describe('CounterStore', () => {
     counterStore = new CounterStore();
   });
 
-  context('there is no arguments', () => {
+  it('calls handleChange', () => {
+    const handleChange = jest.fn();
+    counterStore.addListener(handleChange);
+    counterStore.increase();
+
+    expect(handleChange).toBeCalled();
+  });
+
+  context('there is no argument', () => {
     it('increase count with one', () => {
       counterStore.increase();
 
@@ -23,7 +31,7 @@ describe('CounterStore', () => {
     });
   });
 
-  context('there is no arguments', () => {
+  context('there is argument', () => {
     it('increase count as much as argument', () => {
       counterStore.increase(10);
 
