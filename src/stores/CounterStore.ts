@@ -5,7 +5,7 @@ export type CounterStoreSnapshot = {
 }
 
 export default class CounterStore extends Store<CounterStoreSnapshot> {
-  private count = 0;
+  private count: number;
 
   constructor() {
     super();

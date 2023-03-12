@@ -9,7 +9,7 @@ export default function Counter() {
     <div>
       <p>
         Count:
-        {' '}
+
         {count}
       </p>
     </div>
