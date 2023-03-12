@@ -1,14 +1,14 @@
 import useCounterStore from '../hooks/useCounterStore';
 
 export default function Counter() {
-  const [{ count }] = useCounterStore();
+  const [snapshot] = useCounterStore();
 
   return (
     <div>
       <p>
         Count:
         {' '}
-        {count}
+        {snapshot.count}
       </p>
     </div>
   );
