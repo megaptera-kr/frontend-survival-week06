@@ -1,3 +1,5 @@
+// import useCounterStore from '../hooks/useCounterStore';
+
 import useCounterStore from '../hooks/useCounterStore';
 
 export default function Counter() {
