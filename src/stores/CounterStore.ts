@@ -12,18 +12,16 @@ export default class CounterStore extends Store<CounterStoreSnapshot> {
     this.takeSnapshot();
   }
 
-  increase() {
-    this.count += 1;
-
+  increase(step = 1) {
+    this.count += step;
     this.update();
   }
 
-  decrease() {
-    this.count -= 1;
-
+  decrease(step = 1) {
+    this.count -= step;
     this.update();
   }
-  
+
   private update() {
     this.takeSnapshot();
     this.publish();
