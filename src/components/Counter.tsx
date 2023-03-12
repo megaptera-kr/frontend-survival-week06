@@ -1,8 +1,8 @@
 import useCounterStore from '../hooks/useCounterStore';
 
 export default function Counter() {
-  const [{ count }] = useCounterStore();
-
+  const [snapshot] = useCounterStore();
+  const { count } = snapshot;
   return (
     <div>
       <p>
