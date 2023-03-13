@@ -1,3 +1,5 @@
+// import useCounterStore from '../hooks/useCounterStore';
+
 import useCounterStore from '../hooks/useCounterStore';
 
 export default function Counter() {
@@ -7,7 +9,7 @@ export default function Counter() {
     <div>
       <p>
         Count:
-        {' '}
+
         {count}
       </p>
     </div>

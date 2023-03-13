@@ -1,4 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import {
+  fireEvent, render, screen, waitFor,
+} from '@testing-library/react';
 
 import App from './App';
 
@@ -16,7 +18,9 @@ describe('App', () => {
       fireEvent.click(screen.getByText('Increase'));
       fireEvent.click(screen.getByText('Increase'));
 
-      expect(screen.getAllByText('Count: 2')).toHaveLength(2);
+      waitFor(() => {
+        expect(screen.getAllByText('Count: 2')).toHaveLength(2);
+      });
     });
   });
 });
