@@ -1,11 +1,20 @@
-import { container } from 'tsyringe';
+import { useSyncExternalStore } from 'react';
 
-import { useStore } from 'usestore-ts';
+import CounterStore, { CounterStoreSnapshot } from '../stores/CounterStore';
 
-import CounterStore from '../stores/CounterStore';
+const counterStore = new CounterStore();
 
-export default function useCounterStore() {
-  const store = container.resolve(CounterStore);
+export default function useCounterStore(): [
+  CounterStoreSnapshot,
+  CounterStore,
+  ] {
+  const snapshot = useSyncExternalStore(
+    (onStoreChange) => {
+      counterStore.addListener(onStoreChange);
+      return () => counterStore.removeListener(onStoreChange);
+    },
+    () => counterStore.getSnapshot(),
+  );
 
-  return useStore(store);
+  return [snapshot, counterStore];
 }
