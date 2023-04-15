@@ -16,4 +16,9 @@ export default class CartStore {
   removeCartItem(deleteIdx: number) {
     this.cart = this.cart.filter((item, index) => index !== deleteIdx);
   }
+
+  @Action()
+  removeAllCartItems() {
+    this.cart = [];
+  }
 }
