@@ -15,7 +15,7 @@
     "codeceptjs": "codeceptjs run --steps",
     "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
     "codeceptjs:ui": "codecept-ui --app",
-    "ci": "concurrently -s first -k 'npm:serve' 'sleep 3 && npm run codeceptjs'"
+    "ci": "concurrently -s first -k 'npm run server' 'npm run serve' 'sleep 3 && npm run codeceptjs'"
   },
   "author": "seedwhale",
   "license": "ISC",
