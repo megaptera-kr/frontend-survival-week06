@@ -29,17 +29,18 @@ export default class RestaurantStore {
     const { name, category } = newSearchParams;
 
     if (!name && category === '전체') {
+      this.searchParams = { name: '', category: '전체' };
       this.restaurants = this.allRestaurants;
       return;
     }
 
+    this.searchParams = newSearchParams;
     this.restaurants = this.allRestaurants.filter((restaurant) => {
       const isNameMatched = !name.trim() || restaurant.name.includes(name);
       const isCategoryMatched = category === '전체' || restaurant.category === category;
 
       return isNameMatched && isCategoryMatched;
     });
-    this.searchParams = newSearchParams;
   }
 
   async fetchRestaurant() {
