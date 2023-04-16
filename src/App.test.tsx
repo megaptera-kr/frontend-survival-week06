@@ -1,9 +1,11 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import App from './App';
 
-const context = describe;
+test('App', async () => {
+  const { asFragment } = render(<App />);
 
-test('App', () => {
-  render(<App />);
+  await screen.findByText('짜장면');
+
+  expect(asFragment()).toMatchSnapshot();
 });

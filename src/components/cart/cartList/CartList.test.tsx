@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 import { container } from 'tsyringe';
 
@@ -6,8 +5,6 @@ import cartItems from '../../../../fixtures/cartItems';
 import CartList from './CartList';
 import useCartStore from '../../../hooks/useCartStore';
 import CartStore from '../../../stores/CartStore';
-
-const context = describe;
 
 jest.mock('../../../hooks/useCartStore');
 
