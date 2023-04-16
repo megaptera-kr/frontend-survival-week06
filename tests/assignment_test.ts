@@ -1,21 +1,34 @@
 Feature('과제 테스트');
 
-Scenario('카운터', ({ I }) => {
+Scenario('메뉴 주문', ({ I }) => {
   I.amOnPage('/');
 
-  I.see('Hello, world!');
+  I.see('메가테라 푸드코트 키오스크');
 
-  I.see('Count: 0');
+  I.see('메가반점');
+  I.see('메리김밥');
+  I.see('혹등고래카레');
 
-  I.click('Increase');
-  I.see('Count: 1');
+  I.click('중식');
+  I.see('짜장면');
+  I.dontSee('김밥');
 
-  I.click('Increase 10');
-  I.see('Count: 11');
+  I.click('한식');
+  I.see('메리김밥');
+  I.see('김밥');
+  I.see('제육김밥');
 
-  I.click('Decrease');
-  I.see('Count: 10');
+  I.click('전체');
 
-  I.click('Decrease 10');
-  I.see('Count: 0');
+  I.fillField('검색', '혹등');
+  I.see('기본카레');
+  I.dontSee('메리김밥');
+
+  I.fillField('검색', ' ');
+
+  I.see('메가반점');
+  I.see('메리김밥');
+  I.see('혹등고래카레');
+
+
 });
