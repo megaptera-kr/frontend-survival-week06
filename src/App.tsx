@@ -1,13 +1,14 @@
-import Counter from './components/Counter';
-import CountControl from './components/CountControl';
+import FilterableRestaurants from './components/filterableRestaurants/FilterableRestaurants';
+import Cart from './components/cart/Cart';
 
 export default function App() {
   return (
-    <div>
-      <p>Hello, world!</p>
-      <Counter />
-      <Counter />
-      <CountControl />
-    </div>
+    <main>
+      <h1>Kiosk week 6</h1>
+      <section style={{ display: 'flex' }}>
+        <FilterableRestaurants />
+        <Cart />
+      </section>
+    </main>
   );
 }
