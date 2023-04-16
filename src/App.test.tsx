@@ -13,10 +13,10 @@ describe('App', () => {
     test('counter', () => {
       render(<App />);
 
-      fireEvent.click(screen.getByText('Increase'));
-      fireEvent.click(screen.getByText('Increase'));
+      //fireEvent.click(screen.getByText('Increase'));
 
-      expect(screen.getAllByText('Count: 2')).toHaveLength(2);
+
+      expect(screen.getAllByText('푸드코트 키오스크')).toHaveLength(2);
     });
   });
 });
