@@ -3,22 +3,21 @@ type CategoryProps = {
     setFilterCategory: (text: string) => void;
 }
 
-
 export default function Category({
-    category, setFilterCategory
+  category, setFilterCategory,
 }: CategoryProps) {
+  return (
+    <li style={{
+      marginRight: '1rem',
+    }}
+    >
+      <button
+        type="button"
+        onClick={() => setFilterCategory(category)}
+      >
+        {category}
+      </button>
 
-    return (
-        <li style={{
-            marginRight: '1rem',
-        }}
-        >
-            <button type="button"
-                onClick={() => setFilterCategory(category)}
-            >
-                {category}
-            </button>
-
-        </li>
-    )
+    </li>
+  );
 }

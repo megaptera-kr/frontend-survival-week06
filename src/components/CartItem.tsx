@@ -1,5 +1,5 @@
-import Food from "../types/Food"
-import MenuItem from "./MenuItem"
+import Food from '../types/Food';
+import MenuItem from './MenuItem';
 
 type CartItemProps = {
     food: Food;
@@ -8,25 +8,23 @@ type CartItemProps = {
 }
 
 export default function CartItem({
-    food, index, onClickCancel
+  food, index, onClickCancel,
 }: CartItemProps) {
+  const { name, price } = food;
 
-    const { name, price } = food;
-
-    return (
-        <div>
-            <span>{name}</span>
-            <span>
-                {price.toLocaleString()}
-                원
-            </span>
-            <button
-                type="button"
-                onClick={() => onClickCancel(index)}
-            >
-                X
-            </button>
-        </div>
-    )
+  return (
+    <div>
+      <span>{name}</span>
+      <span>
+        {price.toLocaleString()}
+        원
+      </span>
+      <button
+        type="button"
+        onClick={() => onClickCancel(index)}
+      >
+        X
+      </button>
+    </div>
+  );
 }
-
