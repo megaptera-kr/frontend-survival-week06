@@ -6,7 +6,8 @@
   "scripts": {
     "start": "parcel --port 8080",
     "build": "parcel build --no-source-maps",
-    "serve": "server dist index.html 8080 --reload",
+    "server": "cd express-app && npx ts-node app.ts",
+    "serve": "servor dist index.html 8080 --reload",
     "check": "tsc --noEmit",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
     "test": "jest",
