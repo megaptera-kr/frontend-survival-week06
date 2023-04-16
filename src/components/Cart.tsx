@@ -11,7 +11,7 @@ export default function Cart() {
       <ul>
         {cart.map((item, idx) => {
           const key = `${item.id}-${idx}`;
-          return (<CartItem key={key} name={item.name} index={idx} />);
+          return (<CartItem key={key} id={key} name={item.name} index={idx} />);
         })}
       </ul>
       <p>

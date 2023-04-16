@@ -1,16 +1,16 @@
 import useCartStore from '../hooks/useCartStore';
 
 type CartItemProps = {
-  key: string,
+  id: string,
   name: string,
   index:number,
 }
 
-export default function CartItem({ key, name, index }: CartItemProps) {
+export default function CartItem({ id, name, index }: CartItemProps) {
   const [, store] = useCartStore();
 
   return (
-    <li key={key}>
+    <li key={id}>
       {name}
       <button
         type="button"
