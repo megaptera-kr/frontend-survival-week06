@@ -6,6 +6,7 @@
   "scripts": {
     "start": "parcel --port 8080",
     "build": "parcel build --no-source-maps",
+    "server": "cd express-app && npx ts-node app.ts",
     "serve": "servor dist index.html 8080 --reload",
     "check": "tsc --noEmit",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
@@ -16,7 +17,7 @@
     "codeceptjs": "codeceptjs run --steps",
     "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
     "codeceptjs:ui": "codecept-ui --app",
-    "ci": "concurrently -s first -k 'npm:serve' 'sleep 3 && npm run codeceptjs'"
+    "ci": "concurrently -s first -k 'npm run server' 'npm run serve' 'sleep 3 && npm run codeceptjs'"
   },
   "author": "seedwhale",
   "license": "ISC",
