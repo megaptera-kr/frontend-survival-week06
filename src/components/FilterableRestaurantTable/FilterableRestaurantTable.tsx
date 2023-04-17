@@ -9,6 +9,7 @@ import RestaurantTable from './RestaurantTable';
 interface FilterableRestaurantTableProps {
   restaurants: Restaurant[];
 }
+
 export default function FilterableRestaurantTable({
   restaurants,
 }: FilterableRestaurantTableProps) {
