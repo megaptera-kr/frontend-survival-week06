@@ -10,7 +10,7 @@ export default function Layout({ children }:Props) {
       <h1 className="font-extrabold text-4xl w-full text-center my-10">
         메가테라 푸드코트 키오스크
       </h1>
-      <section className="grid grid-cols-2">
+      <section className="grid grid-cols-2 gap-4">
         {children}
       </section>
     </main>

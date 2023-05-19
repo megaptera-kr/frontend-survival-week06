@@ -2,7 +2,7 @@ import { singleton } from 'tsyringe';
 
 import { Action, Store } from 'usestore-ts';
 
-import { Restaurant, Data, Category } from '../../types/restaurant';
+import { Restaurant, Data, Category } from '../types/restaurant';
 
 @singleton()
 @Store()
@@ -32,6 +32,15 @@ export default class RestaurantStore {
     const query = this.filteredText.trim();
 
     return filteredRestaurants.filter((restaurant) => restaurant.name.includes(query));
+  }
+
+  @Action()
+  categories():Category[] {
+    if (!this.restaurants) {
+      return ['전체'];
+    }
+
+    return this.restaurants.reduce((acc: Category[], cur) => (acc.includes(cur.category) ? acc : [...acc, cur.category]), ['전체']);
   }
 
   @Action()

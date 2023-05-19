@@ -1,4 +1,4 @@
-import useRestaurantsStore from '../hooks/useRestaurantsStore';
+import useRestaurantsStore from '../../hooks/useRestaurantsStore';
 
 import RestaurantRow from './RestaurantRow';
 
@@ -17,12 +17,16 @@ export default function RestaurantTable() {
         </tr>
       </thead>
       <tbody>
-        {filteredRestaurants?.map((restaurant) => (
+        {filteredRestaurants.length > 0 ? filteredRestaurants?.map((restaurant) => (
           <RestaurantRow
             key={restaurant.id}
             restaurant={restaurant}
           />
-        ))}
+        )) : (
+          <tr>
+            <td colSpan={3} className="border-2 border-blue-500">식당이 존재하지 않습니다.</td>
+          </tr>
+        )}
       </tbody>
     </table>
   );

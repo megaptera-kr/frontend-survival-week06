@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useRestaurantsStore from '../hooks/useRestaurantsStore';
+import useRestaurantsStore from '../../hooks/useRestaurantsStore';
 import RestaurantTable from './RestaurantTable';
 import SearchBar from './SearchBar';
 

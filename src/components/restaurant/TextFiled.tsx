@@ -1,13 +1,10 @@
-import useRestaurantsStore from '../hooks/useRestaurantsStore';
-
 type Props = {
   label: string;
   placeholder: string;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export default function TextFiled({ label, placeholder }:Props) {
-  const [, store] = useRestaurantsStore();
-
+export default function TextFiled({ label, placeholder, handleChange }:Props) {
   return (
     <div className="w-full flex justify-between items-center mb-4">
       <label
@@ -21,7 +18,7 @@ export default function TextFiled({ label, placeholder }:Props) {
         id="search-input"
         className="text-xl border-2 border-blue-300 focus:outline-none focus:border-blue-500 px-2 rounded-md w-[90%]"
         placeholder={placeholder}
-        onChange={(e:React.ChangeEvent<HTMLInputElement>) => store.search(e.target.value)}
+        onChange={handleChange}
       />
     </div>
   );
