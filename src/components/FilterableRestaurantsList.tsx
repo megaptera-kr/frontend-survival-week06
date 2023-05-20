@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Restaurant } from '../types/restaurants';
 import RestaurantItem from './RestaurantItem';
 import SearchBar from './SearchBar';
+import filterRestaurants from '../utils/filterRestaurants';
 
 type Props = {
   restaurants: Restaurant[];
@@ -9,6 +10,8 @@ type Props = {
 
 export default function FilterableRestaurantsList({ restaurants }: Props) {
   const [keyword, setKeyword] = useState<string>('');
+
+  const filteredRestaurants = filterRestaurants(restaurants, { keyword });
 
   return (
     <section>
@@ -19,7 +22,7 @@ export default function FilterableRestaurantsList({ restaurants }: Props) {
         <h2>메뉴</h2>
       </section>
       <ul>
-        {restaurants && restaurants.map((item) => (
+        {filteredRestaurants && filteredRestaurants.map((item) => (
           <RestaurantItem key={item.id} data={item} />
         ))}
       </ul>
