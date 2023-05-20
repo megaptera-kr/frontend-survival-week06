@@ -2,11 +2,16 @@ import { Restaurant } from '../types/restaurants';
 
 type Condition = {
   keyword: string;
+  selectedCategory: string;
 }
 
-export default function filterRestaurants(data: Restaurant[], { keyword }: Condition) {
+export default function filterRestaurants(
+  data: Restaurant[], { keyword, selectedCategory }: Condition,
+): Restaurant[] {
+  const filteredData = selectedCategory === '전체' ? data : data.filter((item) => item.category === selectedCategory);
+
   if (!keyword) {
-    return data;
+    return filteredData;
   }
-  return data && data.filter((item) => (item.name.includes(keyword)));
+  return filteredData.filter((item) => (item.name.includes(keyword)));
 }
