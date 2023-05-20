@@ -8,6 +8,5 @@ export type Restaurant = {
   id: string;
   name: string;
   category: string;
-  price: string;
   menu: Menu[];
 }
