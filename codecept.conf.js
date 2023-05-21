@@ -22,5 +22,5 @@ exports.config = {
   include: {
     I: './tests/steps_file.ts',
   },
-  name: 'frontend-survival-week03',
+  name: 'frontend-survival-week06',
 };
