@@ -1,6 +1,5 @@
 import { Menu } from '../types/restaurants';
 import useDispatch from '../hooks/useDispatch';
-import useSelector from '../hooks/useSelector';
 
 type Props = {
   data: Menu[];

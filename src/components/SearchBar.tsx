@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import FilterButtons from './FilterButtons';
 import FilterKeyword from './FilterKeyword';
 
