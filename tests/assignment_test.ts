@@ -36,17 +36,17 @@ Scenario('음식 주문하기', ({ I }) => {
 
   I.see('푸드코트 키오스크');
 
-  I.click('짜장면');
-  I.click('짬뽕');
-  I.click('김밥');
-  I.click('기본카레');
+  I.click({ name: '#짜장면' });
+  I.click({ name: '#짬뽕' });
+  I.click({ name: '#김밥' });
+  I.click({ name: '#기본카레' });
 
-  I.see('주문내역4개');
+  I.see('주문내역 4개');
   I.see('28,500원');
 
-  I.click('주문하기');
+  I.click({ name: '주문하기' });
 
-  I.see('주문내역0개');
+  I.see('주문내역 0개');
 });
 
 Scenario('음식 주문 취소하기', ({ I }) => {
@@ -54,13 +54,13 @@ Scenario('음식 주문 취소하기', ({ I }) => {
 
   I.see('푸드코트 키오스크');
 
-  I.click('탕수육');
-  I.click('제육김밥');
+  I.click({ name: '#탕수육' });
+  I.click({ name: '#제육김밥' });
 
-  I.see('주문내역2개');
+  I.see('주문내역 2개');
   I.see('19,500원');
 
-  I.click('취소');
+  I.click({ name: '취소하기' });
 
-  I.see('주문내역0개');
+  I.see('주문내역 0개');
 });
