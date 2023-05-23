@@ -21,6 +21,7 @@ export default function Cart() {
   return (
     <div>
       <h2>점심 바구니</h2>
+      <h3>주문 내역</h3>
       <ul>
         {menu.map((food: Food, index: number) => (
           <Menu
@@ -43,7 +44,7 @@ export default function Cart() {
         개
       </p>
       <p>
-        예상 금액:
+        총 결제 예상 금액:
         {' '}
         {menu.reduce((acc, food) => acc + food.price, 0).toLocaleString()}
       </p>

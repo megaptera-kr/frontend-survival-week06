@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 
-type FilterTextFieldProps = {
+type TextFieldProps = {
     text: string,
     setText: (text: string) => void
 }
 
-export default function FilterTextField({ text, setText } : FilterTextFieldProps) {
+export default function TextField({ text, setText } : TextFieldProps) {
   const id = useRef(`input-${Math.random()}`);
 
   return (

@@ -1,11 +1,11 @@
-type filterCategoryProps = {
+type CategoryProps = {
     categories: string[],
     setCategory: (category: string) => void,
 }
 
-export default function filterCategory({
+export default function Category({
   categories, setCategory,
-}: filterCategoryProps) {
+}: CategoryProps) {
   const handleClickCategory = (category: string) => {
     setCategory(category);
   };

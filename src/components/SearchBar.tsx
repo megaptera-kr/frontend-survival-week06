@@ -1,5 +1,5 @@
-import FilterTextField from './FilterTextField';
-import FilterCategory from './FilterCategory';
+import Category from './Category';
+import TextField from './TextField';
 
 type SearchBarProps = {
   categories: string[],
@@ -13,11 +13,11 @@ export default function SearchBar({
 }: SearchBarProps) {
   return (
     <div>
-      <FilterTextField
+      <TextField
         text={filterText}
         setText={setFilterText}
       />
-      <FilterCategory
+      <Category
         categories={categories}
         setCategory={setFilterCategory}
       />
