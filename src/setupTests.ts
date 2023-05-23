@@ -2,7 +2,9 @@ import 'reflect-metadata';
 
 import server from './mocks/server';
 
-beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
+beforeAll(() => {
+  server.listen({ onUnhandledRequest: 'error' });
+});
 
 afterAll(() => server.close());
 

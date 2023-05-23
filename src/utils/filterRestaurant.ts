@@ -5,12 +5,21 @@ type filterRestaurantCondition = {
     filterCategory: string,
 }
 
+function normalize(string: string) {
+  return string.toLocaleLowerCase().replace(/\s/g, '');
+}
+
 export default function filterRestaurant(
-  restaurants,
+  restaurants: Restaurant[],
   { filterText, filterCategory }: filterRestaurantCondition,
 ) {
-  let filteredRestaurant = filterText.length
-    ? restaurants.filter(({ name }: {name: string}) => name.includes(filterText))
+  const query = normalize(filterText);
+
+  let filteredRestaurant: Restaurant[] = query.length
+    ? restaurants.filter(({ name }: {name: string}) => {
+      const normalizedName = normalize(name);
+      return normalizedName.includes(query);
+    })
     : restaurants;
 
   if (filterCategory !== '전체') {
