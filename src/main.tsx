@@ -3,10 +3,12 @@ import 'reflect-metadata';
 import ReactDOM from 'react-dom/client';
 
 import App from './App';
-import server from './mocks/server';
+import worker from './mocks/worker';
 
 function main() {
-  server.listen();
+  // if (process.env.NODE_ENV === 'development') {
+  //   worker.start();
+  // }
 
   const container = document.getElementById('root');
   if (!container) {

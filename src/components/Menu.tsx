@@ -1,11 +1,11 @@
 import Food from '../types/Food';
 
-type FoodProps = {
+type MenuProps = {
   food: Food,
-  children:any
+  children:React.ReactNode
 }
 
-export default function Food({ food, children }: FoodProps) {
+export default function Menu({ food, children }: MenuProps) {
   const { name, price } = food;
 
   return (

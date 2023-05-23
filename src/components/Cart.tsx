@@ -1,26 +1,33 @@
-import { useState } from 'react';
-import OrderButton from './OrderButton';
-import fixtures from '../../fixtures';
-import Food from './Food';
+import Menu from './Menu';
+import Food from '../types/Food';
+import useCartStore from '../hooks/useCartStore';
 
 export default function Cart() {
-  // const [cartItems, setCartItems] = useState([]);
-  const cartItems = fixtures.menu;
+  const [{ menu }, store] = useCartStore();
+
+  const handleClickRemove = (index: number) => {
+    store.removeMenu(index);
+  };
 
   return (
     <div>
       <h2>점심 바구니</h2>
       <ul>
-        {/* {cartItems.map((food) => (
-          <Food
+        {menu.map((food: Food, index: number) => (
+          <Menu
             key={food.id}
             food={food}
           >
-            <button type="button">취소</button>
-          </Food>
-        ))} */}
+            <button
+              type="button"
+              onClick={() => handleClickRemove(index)}
+            >
+              취소
+
+            </button>
+          </Menu>
+        ))}
       </ul>
-      <OrderButton />
     </div>
   );
 }

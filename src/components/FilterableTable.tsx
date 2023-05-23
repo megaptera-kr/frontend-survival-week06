@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import RestaurantTable from './RestaurantTable';
 import SearchBar from './SearchBar';
 import filterRestaurant from '../utils/filterRestaurant';
@@ -6,7 +6,7 @@ import Restaurant from '../types/Restaurants';
 import useFetchRestaurants from '../hooks/useFetchRestaurants';
 
 export default function FilterableTable() {
-  let restaurants;
+  const restaurants: Restaurant[] = useFetchRestaurants();
 
   const [filterText, setFilterText] = useState<string>('');
   const [filterCategory, setFilterCategory] = useState<string>('전체');
@@ -14,14 +14,6 @@ export default function FilterableTable() {
   const categories = ['중식', '일식'];
 
   const filteredRestaurants = filterRestaurant(restaurants, { filterText, filterCategory });
-
-  useEffect(() => {
-    (async () => {
-      const data = await useFetchRestaurants();
-      restaurants = data;
-      console.log(restaurants);
-    })();
-  }, []);
 
   return (
     <div>
@@ -31,11 +23,9 @@ export default function FilterableTable() {
         setFilterText={setFilterText}
         setFilterCategory={setFilterCategory}
       />
-      {restaurants && (
-        <RestaurantTable
-          restaurants={restaurants}
-        />
-      )}
+      <RestaurantTable
+        restaurants={filteredRestaurants}
+      />
     </div>
   );
 }

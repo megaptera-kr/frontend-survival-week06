@@ -1,5 +1,7 @@
+import useCartStore from '../hooks/useCartStore';
+import Food from '../types/Food';
 import Restaurant from '../types/Restaurants';
-import Food from './Food';
+import Menu from './Menu';
 
 type RestaurantRowProps = {
     restaurant: Restaurant;
@@ -7,9 +9,10 @@ type RestaurantRowProps = {
 
 export default function RestaurantRow({ restaurant }: RestaurantRowProps) {
   const { category, name, menu } = restaurant;
+  const [, store] = useCartStore();
 
-  const handleClickSelect = () => {
-    console.log('선택');
+  const handleClickSelect = (food: Food) => {
+    store.addMenu(food);
   };
 
   return (
@@ -19,9 +22,14 @@ export default function RestaurantRow({ restaurant }: RestaurantRowProps) {
       <td>
         <ul>
           {menu.map((food) => (
-            <Food key={food.id} food={food}>
-              <button type="button" onClick={handleClickSelect}>선택</button>
-            </Food>
+            <Menu key={food.id} food={food}>
+              <button
+                type="button"
+                onClick={() => handleClickSelect(food)}
+              >
+                선택
+              </button>
+            </Menu>
           ))}
         </ul>
       </td>
