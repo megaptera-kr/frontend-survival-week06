@@ -21,7 +21,11 @@ export default function Cart() {
   return (
     <div>
       <h2>점심 바구니</h2>
-      <h3>주문 내역</h3>
+      <h3>
+        주문내역
+        {menu.length}
+        개
+      </h3>
       <ul>
         {menu.map((food: Food, index: number) => (
           <Menu
@@ -37,12 +41,6 @@ export default function Cart() {
           </Menu>
         ))}
       </ul>
-      <p>
-        주문 갯수:
-        {' '}
-        {menu.length}
-        개
-      </p>
       <p>
         총 결제 예상 금액:
         {' '}
