@@ -1,15 +1,21 @@
 import useCartStore from '../hooks/useCartStore';
 
 import { Food } from '../types';
+
 import key from '../utils/key';
 
 import CartItem from './CartItem';
+import CartButtons from './CartButtons';
 
 export default function Cart() {
   const [{ cart, foodCount, totalPrice }, store] = useCartStore();
 
   const handleClickRemove = (index: number) => {
     store.removeCartItem(index);
+  };
+
+  const handleClickReset = () => {
+    store.resetCart();
   };
 
   return (
@@ -36,18 +42,9 @@ export default function Cart() {
         {totalPrice.toLocaleString()}
         원
       </p>
-      <button
-        type="button"
-        onClick={() => store.resetCart()}
-      >
-        주문하기
-      </button>
-      <button
-        type="button"
-        onClick={() => store.resetCart()}
-      >
-        취소
-      </button>
+      <CartButtons
+        resetCart={handleClickReset}
+      />
     </div>
   );
 }

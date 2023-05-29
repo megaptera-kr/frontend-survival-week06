@@ -11,7 +11,8 @@ export default function FilterButtons({
 }
   : FilterButtonsProps) {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const category = event.currentTarget.innerText;
+    const category = event.currentTarget.textContent || '전체';
+
     setFilterCategory(category);
   };
 
@@ -25,7 +26,6 @@ export default function FilterButtons({
               onClick={handleClick}
             >
               {category}
-
             </button>
           </li>
         ))

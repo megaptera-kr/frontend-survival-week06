@@ -1,25 +1,20 @@
-import useCartStore from '../hooks/useCartStore';
-
 import { Food } from '../types';
 
-interface MenuRowProps {
+interface MenuButtonProps {
     food: Food;
+    handleClickSelect: (food: Food) => void
 }
 
-export default function MenuRow({ food } : MenuRowProps) {
-  const [, store] = useCartStore();
-
-  const handleClick = () => {
-    store.addCartItem(food);
-  };
-
+export default function MenuButton({ food, handleClickSelect }
+  : MenuButtonProps) {
   return (
     <li
+      key={food.id}
       style={{ paddingBlock: '.5rem' }}
     >
       <button
         type="button"
-        onClick={handleClick}
+        onClick={() => handleClickSelect(food)}
         style={{
           display: 'inline-block',
           minWidth: 'max-content',
@@ -32,6 +27,8 @@ export default function MenuRow({ food } : MenuRowProps) {
         {food.price.toLocaleString()}
         원)
       </button>
+
     </li>
+
   );
 }
