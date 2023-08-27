@@ -1,6 +1,6 @@
 import MenuListItem from './MenuListItem';
 
-import useBasketStorage from '../hooks/useBasketStorage';
+import useBasketStore from '../hooks/useBasketStore';
 
 import { Menu } from '../types/restaurant';
 import BasketButton from './BasketButton';
@@ -10,7 +10,7 @@ type MenuListProps = {
 };
 
 export default function MenuList({ menuList }: MenuListProps) {
-  const { addMenu } = useBasketStorage();
+  const [, store] = useBasketStore();
 
   if (!menuList.length) {
     return <p>메뉴가 존재하지 않습니다</p>;
@@ -21,9 +21,9 @@ export default function MenuList({ menuList }: MenuListProps) {
       {menuList.map((menu) => (
         <MenuListItem key={menu.id} menu={menu}>
           <BasketButton
-            name={`#${menu.name}`}
+            name={menu.name}
             text="선택"
-            onClick={() => addMenu(menu)}
+            onClick={() => store.addMenu(menu)}
           />
         </MenuListItem>
       ))}

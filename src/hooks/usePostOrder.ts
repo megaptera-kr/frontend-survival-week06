@@ -1,9 +1,9 @@
-import useBasketStorage from './useBasketStorage';
+import useBasketStore from './useBasketStore';
 
 const url = 'http://localhost:3000/orders';
 
 export default function usePostOrder() {
-  const { basket, totalPrice } = useBasketStorage();
+  const [{ basket, totalPrice }] = useBasketStore();
 
   const postOrder = async () => {
     const body = {

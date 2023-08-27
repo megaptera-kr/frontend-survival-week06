@@ -5,7 +5,7 @@ import fixtures from '../../fixtures';
 
 const removeMenu = jest.fn();
 
-jest.mock('../hooks/useBasketStorage', () => () => ({
+jest.mock('../hooks/useBasketStore', () => () => ({
   bucket: fixtures.foods,
   removeMenu,
 }));

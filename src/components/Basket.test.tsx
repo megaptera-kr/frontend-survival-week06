@@ -9,7 +9,7 @@ describe('Basket', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    jest.mock('../hooks/useBasketStorage', () => () => ({
+    jest.mock('../hooks/useBasketStore', () => () => ({
       basket: fixtures.foods,
       totalPrice: 16000,
       clearBasket: jest.fn(),

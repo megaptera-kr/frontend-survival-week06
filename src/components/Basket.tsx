@@ -4,16 +4,14 @@ import BasketList from './BasketList';
 import BasketButton from './BasketButton';
 
 import { Receipt } from '../types/receipt';
-import useBasketStorage from '../hooks/useBasketStorage';
+import useBasketStore from '../hooks/useBasketStore';
 
 type BasketProps = {
   addReceipt: (receipt: Receipt) => void;
 }
 
 export default function Basket({ addReceipt }: BasketProps) {
-  const {
-    basket, totalPrice, clearBasket, removeMenu,
-  } = useBasketStorage();
+  const [{ basket, totalPrice }, store] = useBasketStore();
   const { postOrder } = usePostOrder();
 
   const handleClickOrder = async () => {
@@ -24,11 +22,15 @@ export default function Basket({ addReceipt }: BasketProps) {
       menu: basket,
       totalPrice,
     });
-    clearBasket();
+    store.clearBasket();
+  };
+
+  const handleClickRemoveMenu = (index: number) => {
+    store.removeMenu(index);
   };
 
   const handleClickCancel = () => {
-    clearBasket();
+    store.clearBasket();
   };
 
   return (
@@ -40,13 +42,13 @@ export default function Basket({ addReceipt }: BasketProps) {
       <h2>점심 바구니</h2>
       <BasketList
         basketList={basket}
-        handleClickRemove={removeMenu}
+        handleClickRemove={handleClickRemoveMenu}
       />
       <div>
         <p>
-          총 주문 수:
-          {' '}
-          { basket.length}
+          주문내역
+          {basket.length}
+          개
         </p>
       </div>
       <div
@@ -57,6 +59,7 @@ export default function Basket({ addReceipt }: BasketProps) {
       >
         <BasketButton
           text={`합계: ${priceToLocal(totalPrice)}원 주문`}
+          name="주문하기"
           onClick={handleClickOrder}
           disabled={!basket.length}
         />

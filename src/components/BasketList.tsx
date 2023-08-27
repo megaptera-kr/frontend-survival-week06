@@ -19,7 +19,7 @@ export default function BasketList({ basketList, handleClickRemove }: BasketList
             menu={basketItem}
           >
             <BasketButton
-              name={`#${basketItem.name}`}
+              name={basketItem.name}
               text="X"
               onClick={() => handleClickRemove(index)}
             />

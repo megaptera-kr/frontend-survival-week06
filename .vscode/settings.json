@@ -1,6 +1,8 @@
 {
   "cSpell.words": [
-    "usehooks"
+    "tsyringe",
+    "usehooks",
+    "usestore"
   ],
   "editor.formatOnSave": false,
 }
