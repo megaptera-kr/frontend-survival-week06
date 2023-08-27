@@ -11,7 +11,7 @@ type CartListProps = {
 
 function CartList({ item, index, onClickCancel }: CartListProps) {
   return (
-    <li>
+    <li style={{ marginBottom: '1rem' }}>
       <span>{`${item.name}(${item.price.toLocaleString()}원)`}</span>
       <button type="button" onClick={() => onClickCancel(index)}>X</button>
     </li>

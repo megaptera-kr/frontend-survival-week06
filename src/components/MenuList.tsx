@@ -15,7 +15,7 @@ function MenuList({ food, onClickBtn }: MenuProps) {
         style={{ float: 'right' }}
         onClick={() => onClickBtn(food)}
       >
-        선택
+        {food.name}
       </button>
     </li>
   );
