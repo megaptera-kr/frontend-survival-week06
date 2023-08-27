@@ -35,6 +35,7 @@ export default function ReceiptPrinter({ receipt }: ReceiptPrinterProps) {
               <MenuItem
                 key={key}
                 food={food}
+                onClick={() => { console.log('영수증'); }}
               />
             );
           })}
