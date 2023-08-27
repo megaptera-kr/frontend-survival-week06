@@ -1,5 +1,6 @@
 import DEFAULT_SELECTED_CATEGORY from '../constants/categories';
-import { Restaurant } from '../types/restaurants';
+
+import { Restaurant } from '../types/restaurant';
 
 export default function selectCategories(restaurants: Restaurant[]) {
   return restaurants
