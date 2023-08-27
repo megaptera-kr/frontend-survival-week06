@@ -1,6 +1,6 @@
 import { singleton } from 'tsyringe';
 
-import BaseStore from './BaseStore';
+import BaseStore from './base.store';
 
 import reducers, { State, initialState } from './reducers/cart.reducer';
 

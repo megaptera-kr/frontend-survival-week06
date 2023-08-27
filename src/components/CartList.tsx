@@ -6,19 +6,14 @@ import { removeItem } from '../stores/actions/cart.action';
 type CartListProps = {
   item: Menu;
   index: number;
+  onClickCancel: (index: number) => void;
 }
 
-function CartList({ item, index }: CartListProps) {
-  const dispatch = useDispatch();
-
-  const handleClickCancel = () => {
-    dispatch(removeItem(index));
-  };
-
+function CartList({ item, index, onClickCancel }: CartListProps) {
   return (
     <li>
       <span>{`${item.name}(${item.price.toLocaleString()}원)`}</span>
-      <button type="button" onClick={handleClickCancel}>X</button>
+      <button type="button" onClick={() => onClickCancel(index)}>X</button>
     </li>
   );
 }

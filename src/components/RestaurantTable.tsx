@@ -5,7 +5,7 @@ type RestaurantsProps = {
   restaurants: Restaurants[]
 }
 
-function RestaurantsTable({ restaurants }: RestaurantsProps) {
+function RestaurantTable({ restaurants }: RestaurantsProps) {
   return (
     <div>
       <table>
@@ -26,4 +26,4 @@ function RestaurantsTable({ restaurants }: RestaurantsProps) {
   );
 }
 
-export default RestaurantsTable;
+export default RestaurantTable;

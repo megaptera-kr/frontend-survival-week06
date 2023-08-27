@@ -1,7 +1,7 @@
 import { container } from 'tsyringe';
 
 import Store from '../stores/store';
-import { type Action } from '../stores/BaseStore';
+import { type Action } from '../stores/base.store';
 
 function useDispatch<Payload>() {
   const store = container.resolve(Store);

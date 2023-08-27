@@ -1,4 +1,4 @@
-import { type Action } from '../BaseStore';
+import { type Action } from '../base.store';
 import type { Menu } from '../../types/restaurants';
 
 export const initialState: {menu: Menu[]} = {

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import useFetchRestaurants from './hooks/useFetchRestaurants';
 
 import Cart from './components/Cart';
-import RestaurantsTable from './components/RestaurantsTable';
+import RestaurantTable from './components/RestaurantTable';
 
 import filterRestaurant from './utils/filterRestaurant';
 import SearchBar from './components/SearchBar';
@@ -28,7 +28,7 @@ export default function App() {
         setCategory={setCategory}
         categories={categories}
       />
-      <RestaurantsTable restaurants={filteredRestaurants} />
+      <RestaurantTable restaurants={filteredRestaurants} />
     </div>
   );
 }
