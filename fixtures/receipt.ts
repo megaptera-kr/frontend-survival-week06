@@ -1,7 +1,8 @@
-import { IReceipt } from '../src/types/receipt';
 import foods from './foods';
 
-const receipt: IReceipt = {
+import { Receipt } from '../src/types/receipt';
+
+const receipt: Receipt = {
   id: 'RECEIPT_ID',
   menu: foods,
   totalPrice: foods.reduce((acc, cur) => acc + cur.price, 0),
