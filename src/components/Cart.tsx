@@ -1,29 +1,21 @@
 import useCartStore from '../hooks/useCartStore';
-import useCreateOrder from '../hooks/useCreateOrder';
-import Receipt from '../types/Receipt';
+
 import CartItem from './CartItem';
 import OperationButtons from './OperationButtons';
 import Summary from './Summary';
 
-type CartProps = {
-    setReceipt: (receipt: Receipt) => void;
-}
-
-export default function Cart({ setReceipt }: CartProps) {
+export default function Cart() {
   const store = useCartStore();
-
-  const { createOrder } = useCreateOrder();
 
   const handleClickRemove = (idx:number) => {
     store.deleteCart(idx);
     store.update();
   };
 
-  const handleClickOrder = async () => {
-    if (!store.cart.length) return;
-    const receipt = await createOrder(store.cart);
-    setReceipt(receipt);
+  const handleClickOrder = () => {
+    if (!store.cart) return;
     store.cart = [];
+    store.update();
   };
 
   const handleClickCancel = () => {
