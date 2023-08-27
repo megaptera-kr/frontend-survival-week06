@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import RestaurantsTable from './RestaurantsTable';
-import restaurants from '../../fixtures/restaurants';
+import fixtures from '../../fixtures';
 
 const context = describe;
 
@@ -10,7 +10,7 @@ describe('RestaurantsTable', () => {
     it('테이블을 렌더링한다', () => {
       render((
         <RestaurantsTable
-          restaurants={restaurants}
+          restaurants={fixtures.restaurants}
         />
       ));
 
