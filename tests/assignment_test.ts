@@ -34,7 +34,7 @@ Scenario('메뉴판 필터링', ({ I }) => {
 Scenario('음식 주문하기', ({ I }) => {
   I.amOnPage('/');
 
-  I.see('푸드코트 키오스크');
+  I.see('메가테라 푸드코트 키오스크');
 
   I.click('짜장면');
   I.click('짬뽕');
@@ -52,7 +52,7 @@ Scenario('음식 주문하기', ({ I }) => {
 Scenario('음식 주문 취소하기', ({ I }) => {
   I.amOnPage('/');
 
-  I.see('푸드코트 키오스크');
+  I.see('메가테라 푸드코트 키오스크');
 
   I.click('탕수육');
   I.click('제육김밥');
