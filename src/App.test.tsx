@@ -1,22 +1,25 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import App from './App';
 
-const context = describe;
+describe('<App />', () => {
+  it('renders app', async () => {
+    render(<App />);
 
-test('App', () => {
-  render(<App />);
-});
+    screen.getByText(/키오스크/);
 
-describe('App', () => {
-  context('when press increase button twice', () => {
-    test('counter', () => {
-      render(<App />);
+    screen.getByRole('button', { name: '주문하기' });
+    screen.getByRole('button', { name: '취소' });
 
-      fireEvent.click(screen.getByText('Increase'));
-      fireEvent.click(screen.getByText('Increase'));
+    screen.getByLabelText(/검색/);
 
-      expect(screen.getAllByText('Count: 2')).toHaveLength(2);
+    screen.getByRole('button', { name: '전체' });
+
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /Category-01/ })).toBeInTheDocument();
+
+      screen.getByText(/Restaurant-01/);
+      screen.getByText(/Menu-03/);
     });
   });
 });
