@@ -1,5 +1,6 @@
-import FilterTextField from './FilterTextField';
+import React from 'react';
 import Categories from './Categories';
+import FilterTextField from './FilterTextField';
 
 type SearchBarProps = {
     categories: string[];
