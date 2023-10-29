@@ -1,9 +1,9 @@
-import foods from './menu';
+import menus from './menus';
 import receipt from './receipts';
 import restaurants from './restaurants';
 
 export default {
-  foods,
+  menus,
   receipt,
   restaurants,
 };
