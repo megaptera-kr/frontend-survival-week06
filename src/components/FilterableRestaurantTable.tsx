@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import useFetchRestaurants from "../hooks/useFetchRestaurants";
 import filterRestaurants from "../utils/filterRestaurants";
 import selectCategories from "../utils/selectCategories";
+import RestaurantTable from "./RestaurantTable";
 import SearchBar from "./SearchBar";
 
 export default function FilterableRestaurantTable(){
@@ -22,7 +23,7 @@ export default function FilterableRestaurantTable(){
             setFilterText={setFilterText}
             setFilterCategory={setFilterCategory}
           />
-          {/* <RestaurantTable restaurants={filteredRestaurants} /> */}
+          <RestaurantTable restaurants={filteredRestaurants} />
         </div>
       );
 }
