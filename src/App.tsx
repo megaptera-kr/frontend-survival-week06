@@ -1,8 +1,15 @@
-// TODO: 메가테라 푸트코트 키오스크를 완성해주세요.
+import Cart from './components/Cart';
+import FilterableRestaurantTable from './components/FilterableRestaurantTable';
+import useFetchRestaurants from './hooks/useFetchRestaurants';
+
 export default function App() {
+  const restaurants = useFetchRestaurants();
+
   return (
     <div>
-      <h1>메가테라 푸드코트 키오스크</h1>
+      <h1>푸드코트 키오스크</h1>
+      <Cart />
+      <FilterableRestaurantTable restaurants={restaurants} />
     </div>
   );
 }
