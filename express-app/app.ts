@@ -1,5 +1,5 @@
-import express from 'express';
 import cors from 'cors';
+import express from 'express';
 
 const port = 3000;
 
@@ -26,6 +26,17 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('Hello, world!');
+});
+
+
+const test = {
+  id: '1',
+  category: '중식',
+  name: '메가반점'
+}
+
+app.get('/test', (req, res) => {
+  res.status(200).send({ test});
 });
 
 app.get('/orders/:id', (req, res) => {
