@@ -1,8 +1,13 @@
-// TODO: 메가테라 푸트코트 키오스크를 완성해주세요.
+import { ThemeProvider } from 'styled-components';
+import theme from './styles/theme';
+import GlobalStyles from './styles/GlobalStyles';
+import FoodKioskApp from './foodkioskApp';
+
 export default function App() {
   return (
-    <div>
-      <h1>메가테라 푸드코트 키오스크</h1>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <FoodKioskApp />
+    </ThemeProvider>
   );
 }
