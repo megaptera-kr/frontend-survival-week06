@@ -1,11 +1,13 @@
-import Typography from '../atoms/Typography';
+import Layout from '../atoms/Layout';
+
+import FetchController from './components/FetchController';
+import Header from './components/Header';
 
 export default function FoodKioskApp() {
   return (
-    <div>
-      <Typography as='h1' variant='heading_01'>
-        메가테라 푸드코트 키오스크
-      </Typography>
-    </div>
+    <Layout>
+      <Header title='푸드코트 키오스크' />
+      <FetchController />
+    </Layout>
   );
 }

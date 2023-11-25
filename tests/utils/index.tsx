@@ -12,7 +12,6 @@ function Wrapper({ children }: TestWrraperProps) {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
 
-const useRender = (children: JSX.Element | JSX.Element[]) =>
-  render(<Wrapper>{children}</Wrapper>);
+const useRender = (children: JSX.Element | JSX.Element[]) => render(<Wrapper>{children}</Wrapper>);
 
 export default useRender;

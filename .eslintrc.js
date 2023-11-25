@@ -37,15 +37,21 @@ module.exports = {
     'space-before-blocks': 'error',
     'keyword-spacing': ['error', { before: true, after: true }],
     'comma-spacing': ['error', { before: false, after: true }],
-    'comma-style': ['error', 'last'],
-    'comma-dangle': ['error', 'always-multiline'],
+    // 'comma-style': ['error', 'last'],
+    // 'comma-dangle': ['error', 'always'],
     'space-in-parens': ['error', 'never'],
     'block-spacing': 'error',
     'array-bracket-spacing': ['error', 'never'],
-    'object-curly-spacing': ['error', 'always'],
-    'implicit-arrow-linebreak': ['error', 'below'],
     'key-spacing': ['error', { mode: 'strict' }],
-    'arrow-spacing': ['error', { before: true, after: true }],
+    'object-curly-spacing': ['error', 'always'],
+    'object-curly-newline': [
+      'error',
+      {
+        ImportDeclaration: 'never',
+      },
+    ],
+    // 'implicit-arrow-linebreak': ['error', 'below'],
+    // 'arrow-spacing': ['error', { before: true, after: true }],
 
     'import/no-extraneous-dependencies': [
       'error',

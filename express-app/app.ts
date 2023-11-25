@@ -32,8 +32,7 @@ app.get('/orders/:id', (req, res) => {
   const { id } = req.params;
 
   const { orders } = state;
-  const order = orders.find((i) =>
-    i.id === id);
+  const order = orders.find((i) => i.id === id);
 
   if (!order) {
     res.status(404).send({});

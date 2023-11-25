@@ -25,8 +25,7 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         font-family: 'Noto Sans KR', sans-serif;
-        background: ${({ theme }) =>
-    theme.palette['amber-100']};
+        background: ${({ theme }) => theme.palette['amber-100']};
         font-size: 14px;
         letter-spacing: -0.25px;
     }
