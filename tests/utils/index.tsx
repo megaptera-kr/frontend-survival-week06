@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { render } from '@testing-library/react';
 
-import theme from '../../src/styles/theme';
+import theme from '../../styles/theme';
 
 type TestWrraperProps = { children: React.ReactNode };
 

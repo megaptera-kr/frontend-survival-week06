@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'styled-components';
-import theme from './styles/theme';
-import GlobalStyles from './styles/GlobalStyles';
+import theme from '../styles/theme';
+import GlobalStyles from '../styles/GlobalStyles';
+
 import FoodKioskApp from './foodkioskApp';
 
 export default function App() {
