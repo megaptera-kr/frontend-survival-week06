@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react';
 import styled, { css } from 'styled-components';
-import { center, column, row } from '../../../styles/utilStyles';
+import { column, row, center } from '../../styles/utilStyles';
 
 interface StackProps extends ComponentPropsWithoutRef<'div'> {
   $direction?: 'row' | 'column' | 'center';

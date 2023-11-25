@@ -25,6 +25,7 @@ module.exports = {
   },
   rules: {
     // indent: ['error', 2],
+    'jsx-quotes': ['error', 'prefer-single'],
     'no-trailing-spaces': 'error',
     curly: 'error',
     'brace-style': 'error',
@@ -42,12 +43,18 @@ module.exports = {
     'block-spacing': 'error',
     'array-bracket-spacing': ['error', 'never'],
     'object-curly-spacing': ['error', 'always'],
+    'implicit-arrow-linebreak': ['error', 'below'],
     'key-spacing': ['error', { mode: 'strict' }],
     'arrow-spacing': ['error', { before: true, after: true }],
+
     'import/no-extraneous-dependencies': [
       'error',
       {
         devDependencies: [
+          'src/mocks/handlers.ts',
+          'src/mocks/server.ts',
+          'src/setupTests.ts',
+          'tests/utils/*',
           '**/*.test.js',
           '**/*.test.jsx',
           '**/*.test.ts',

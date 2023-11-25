@@ -3,31 +3,6 @@ import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
     ${reset}
-    :root {}
-
-    html {
-        font-size: 62.5%;
-    }
-
-    body {
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 1.6rem;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: ${({ theme }) => theme.bodyColor};
-        
-        line-height: 1.5;
-        letter-spacing: -0.375px;
-        font-weight: 400;
-        
-        -webkit-overflow-scrolling: touch;
-        
-    }
-
-    #root {
-    }
 
     * {
         box-sizing: border-box;
@@ -36,6 +11,27 @@ const GlobalStyles = createGlobalStyle`
         border: 0;
         outline: none;
     }
+
+    html,
+    body,
+    #root {
+    height: 100%;
+    overflow: hidden;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        background: ${({ theme }) =>
+    theme.palette['amber-100']};
+        font-size: 14px;
+        letter-spacing: -0.25px;
+    }
+
+    
 
     a { 
         color: #fff; 
