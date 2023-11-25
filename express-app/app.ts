@@ -28,15 +28,14 @@ app.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
-
 const test = {
   id: '1',
   category: '중식',
-  name: '메가반점'
-}
+  name: '메가반점',
+};
 
 app.get('/test', (req, res) => {
-  res.status(200).send({ test});
+  res.status(200).send({ test });
 });
 
 app.get('/orders/:id', (req, res) => {
