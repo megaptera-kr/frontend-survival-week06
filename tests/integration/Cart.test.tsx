@@ -14,33 +14,31 @@ import Order from '../../src/foodkioskApp/components/Order';
 
 import FetchController from '../../src/foodkioskApp/components/FetchController';
 
-jest.setTimeout(10000);
+describe('음식담기', () => {
+  context('매뉴를 클릭했을때', () => {
+    beforeEach(() => {
+      container.clearInstances();
+    });
 
-// describe('음식담기', () => {
-//   context('매뉴를 클릭했을때', () => {
-//     beforeEach(() => {
-//       container.clearInstances();
-//     });
+    it('두개의 메뉴가 담겨야한다.', async () => {
+      useRender(
+        <>
+          <Cart title='점심 바구니' />
+          <Menus />
+          <FetchController />
+        </>
+      );
 
-//     it('두개의 메뉴가 담겨야한다.', async () => {
-//       useRender(
-//         <>
-//           <Cart title='점심 바구니' />
-//           <Menus />
-//           <FetchController />
-//         </>
-//       );
+      await waitFor(() => {
+        const menuButton = screen.getByRole('button', { name: '짬뽕' });
+        fireEvent.click(menuButton);
+        fireEvent.click(menuButton);
+      });
 
-//       await waitFor(() => {
-//         const menuButton = screen.getByRole('button', { name: '짬뽕' });
-//         fireEvent.click(menuButton);
-//         fireEvent.click(menuButton);
-//       });
-
-//       await screen.findByText(/주문내역 2개/, {});
-//     });
-//   });
-// });
+      await screen.findByText(/주문내역 2개/, {});
+    });
+  });
+});
 
 describe('메뉴 취소', () => {
   context('음식을 담고 전체를 취소하면', () => {
