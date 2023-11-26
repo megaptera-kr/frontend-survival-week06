@@ -34,6 +34,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
+        background: black;
         font-size: 1.4rem;
         letter-spacing: -0.25px;
     }
