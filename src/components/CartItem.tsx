@@ -17,7 +17,7 @@ export default function CartItem({ item, index, onClickCancel }: CartItemType) {
         type="button"
         onClick={() => onClickCancel(index)}
       >
-        취소
+        삭제
       </button>
     </MenuItem>
   );

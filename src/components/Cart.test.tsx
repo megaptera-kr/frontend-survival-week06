@@ -27,6 +27,6 @@ describe('Cart ', () => {
 
     screen.getByText(/짜장면/);
     screen.getByText(/짬뽕/);
-    screen.getByText(/합계: 13000원/);
+    screen.getByText(/13,000원/);
   });
 });

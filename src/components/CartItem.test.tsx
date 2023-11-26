@@ -28,13 +28,13 @@ describe('CartItem ', () => {
   it('renders item information', () => {
     renderCartItem();
 
-    screen.getByText('짜장면(8,000원)');
+    screen.getByText('짜장면');
   });
 
   it('listens for cancel button click event', () => {
     renderCartItem();
 
-    fireEvent.click(screen.getByText('취소'));
+    fireEvent.click(screen.getByText('삭제'));
 
     expect(handleClickCancel).toBeCalledWith(index);
   });

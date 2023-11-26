@@ -23,18 +23,12 @@ describe('MenuItem', () => {
 
   it('renders food information', () => {
     render(<MenuItem food={food} onClick={onClick} />);
-    screen.getByText('짜장면(8,000원)');
-  });
-
-  it('renders children component', () => {
-    renderMenuItem();
-
-    screen.getByText('선택');
+    screen.getByText('짜장면');
   });
 
   it('listens for select button click event', () => {
     renderMenuItem();
-    fireEvent.click(screen.getByText('선택'));
+    fireEvent.click(screen.getByText('짜장면'));
 
     expect(handleClickSelect).toBeCalledWith(food);
   });

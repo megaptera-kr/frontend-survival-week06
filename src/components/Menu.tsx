@@ -1,6 +1,7 @@
 import { useLocalStorage } from 'usehooks-ts';
 import MenuItem from './MenuItem';
 import type Food from '../types/Food';
+import Button from './Button';
 
 export default function Menu({ menu }: {menu: Food[]}) {
   const [selectMenu, setSelectMenu] = useLocalStorage<Food[]>('cart', []);

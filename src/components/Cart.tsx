@@ -48,7 +48,7 @@ export default function Cart({ setReceiptId }: CartType) {
           })
         }
       </ul>
-      <section style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <section style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
         <span>
           {`${totalPrice.toLocaleString()}원`}
         </span>
@@ -58,7 +58,7 @@ export default function Cart({ setReceiptId }: CartType) {
       </section>
       <section style={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button type="button" title="주문하기" onClick={handleClickOrder} />
-        <Button type="button" title="주문취소" onClick={handleAllCancel} />
+        <Button type="button" title="취소" onClick={handleAllCancel} />
       </section>
     </div>
   );

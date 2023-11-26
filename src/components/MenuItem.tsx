@@ -4,24 +4,23 @@ import type Food from '../types/Food';
 
 type MenuItemProps = {
   food: Food;
+  onClick?: () => void;
 } & HTMLAttributes<Element>;
 
-export default function MenuItem({ food, children }: MenuItemProps) {
-  const { name, price } = food;
+export default function MenuItem({ food, onClick, children }: MenuItemProps) {
+  const { name } = food;
 
   return (
     <li
       style={{
         display: 'flex',
         paddingBlock: '.5rem',
+        cursor: 'pointer',
       }}
     >
-      <span style={{ margin: '0 auto' }}>
+      <button style={{ margin: '0 auto', border: 'none', background: 'none' }} onClick={onClick}>
         {name}
-        (
-        {price.toLocaleString()}
-        원)
-      </span>
+      </button>
       {children}
     </li>
   );
