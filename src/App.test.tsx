@@ -4,14 +4,13 @@ import App from './App';
 
 import useRender from '../tests/utils';
 
-describe('Menu Filtering Scenario', () => {
-  beforeEach(() => {
+describe('App ', () => {
+  it('renders restaurants', async () => {
     useRender(<App />);
-  });
 
-  it('render FoodKiosk', async () => {
     await waitFor(() => {
-      screen.getByText(/푸드코트 키오스크/);
+      screen.getByText(/메가반점/);
+      screen.getByText(/메리김밥/);
     });
   });
 });
