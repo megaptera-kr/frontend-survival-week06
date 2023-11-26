@@ -48,7 +48,7 @@ export default function useCart() {
     [dispatch],
   );
 
-  const fetchOrder = useCallback(
+  const getOrderSummary = useCallback(
     async (orderId: string) => {
       try {
         const response = await fetch(`${ordersURL}/${orderId}`);
@@ -60,6 +60,7 @@ export default function useCart() {
         const { order } = (await response.json()) as Omit<OrderResponse, 'id'>;
 
         getOrder(order);
+
         resetFoods();
       } catch (error) {
         resetFoods();
@@ -68,32 +69,45 @@ export default function useCart() {
     [getOrder, resetFoods],
   );
 
-  const orderMenus = useCallback(
-    async (total: number, menus: Food[]) => {
-      const item = {
-        id: new Date().toISOString(),
-        menu: menus,
-        totalPrice: total,
-      };
-
+  const getOrderId = useCallback(async (item: Order) => {
+    try {
       const response = await fetch(ordersURL, {
         headers: {
           'Content-Type': 'application/json',
         },
         credentials: 'same-origin',
-        method: 'post',
+        method: 'POST',
         body: JSON.stringify(item),
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = (await response.json()) as Omit<OrderResponse, 'order'>;
+      return data;
+    } catch (error) {
+      return null;
+    }
+  }, []);
 
-      const { id } = data;
+  const orderMenus = useCallback(
+    async (total: number, menus: Food[]) => {
+      const item: Order = {
+        id: new Date().toISOString(),
+        menu: menus,
+        totalPrice: total,
+      };
 
-      if (id) {
-        fetchOrder(id);
+      const response = await getOrderId(item);
+
+      if (response && response?.id) {
+        const { id } = response;
+
+        getOrderSummary(id);
       }
     },
-    [dispatch, fetchOrder],
+    [getOrderId, dispatch],
   );
 
   return {

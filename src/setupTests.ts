@@ -4,7 +4,7 @@ import 'whatwg-fetch';
 
 import server from './mocks/server';
 
-beforeAll(() => server.listen({ onUnhandledRequest: 'warn' }));
+beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
 
 afterAll(() => server.close());
 

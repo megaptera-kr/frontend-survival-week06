@@ -69,7 +69,12 @@ export default function Cart({ title }: CartProps) {
                   {priceText}
                   원)
                 </Typography>
-                <Button type='button' onClick={() => deleteFood(index)}>
+                <Button
+                  type='button'
+                  name={`${name}cancel`}
+                  value={`${name}cancel`}
+                  onClick={() => deleteFood(index)}
+                >
                   취소
                 </Button>
               </Item>

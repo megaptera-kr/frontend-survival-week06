@@ -1,13 +1,14 @@
 module.exports = {
   testEnvironment: 'jsdom',
+  setupFiles: ['./jest.polyfills.js'],
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
     '<rootDir>/src/setupTests.ts',
     'jest-styled-components',
   ],
-  // moduleNameMapper: {
-  //   '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-  // },
+  testEnvironmentOptions: {
+    customExportConditions: [''],
+  },
   transform: {
     '^.+\\.(t|j)sx?$': [
       '@swc/jest',
