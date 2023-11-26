@@ -12,7 +12,7 @@ function SearchBar({ handleSetSearchKeyword } : SearchBarProps) {
     <div>
       <input
         type="text"
-        placeholder="매장명 검색"
+        placeholder="검색"
         onChange={onChangeSearchKeyword}
       />
     </div>

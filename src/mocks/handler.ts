@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { rest } from 'msw';
 
 const BASE_URL = 'http://localhost:3000';
@@ -5,13 +6,13 @@ const BASE_URL = 'http://localhost:3000';
 export const handlers = [
 
   rest.get(`${BASE_URL}/test`, (req, res, ctx) => {
-    const test_data = [
+    const testData = [
       {
         test: 'test-sample',
       },
     ];
     return res(
-      ctx.json(test_data),
+      ctx.json(testData),
     );
   }),
   rest.get(`${BASE_URL}/restaurants`, (req, res, ctx) => {

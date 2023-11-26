@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import SearchBar from './SearchBar';
 import Restaurants from '../Restaurants/Restaurants';
 import { restaurants } from '../../features/restaurants';
 

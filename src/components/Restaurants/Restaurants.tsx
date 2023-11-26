@@ -1,14 +1,14 @@
-import { Restaurants } from './Restaurants.interface';
+import Menu from '../Menu/Menu';
+import { RestaurantsInterface } from './Restaurants.interface';
 
 interface RestaurantsProps {
-  restaurants: Restaurants[];
+  restaurants: RestaurantsInterface[];
 }
 
 function Restaurants({ restaurants } : RestaurantsProps) {
   return (
     <div>
-      <h1>메뉴판</h1>
-      <ul>
+      <ul className="restaurants">
         {restaurants.map((restaurant) => (
           <li key={`restaurant_${restaurant.id}`}>
             <div>
@@ -24,8 +24,7 @@ function Restaurants({ restaurants } : RestaurantsProps) {
               </p>
             </div>
             <div>
-              {/* {restaurant.menuItems.map((menuItem) => (
-                )} */}
+              <Menu menues={restaurant.menu} />
             </div>
           </li>
         ))}

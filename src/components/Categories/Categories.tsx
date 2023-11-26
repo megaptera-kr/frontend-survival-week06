@@ -6,7 +6,7 @@ interface CategoriesProps {
 
 function Categories({ categories, currentCategory, handleSetCurrentCategory } : CategoriesProps) {
   return (
-    <ul>
+    <ul className="categories">
       {categories.map((category) => (
         <li key={category}>
           <button type="button" data-testid={category} className={category === currentCategory ? 'selected' : ''} onClick={() => { handleSetCurrentCategory(category); }}>{category}</button>

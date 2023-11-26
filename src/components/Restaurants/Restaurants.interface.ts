@@ -1,12 +1,12 @@
-export type Menu = {
+export type MenuInterface = {
   id : string;
   name: string;
   price: number;
 }
 
-export type Restaurants = {
+export type RestaurantsInterface = {
   id: string;
   name: string;
   category: string;
-  menu: Menu[];
+  menu: MenuInterface[];
 }
