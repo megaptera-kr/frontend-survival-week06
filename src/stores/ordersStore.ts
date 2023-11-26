@@ -30,6 +30,16 @@ const state: State = {
 class OrdersStore {
   state = state;
 
+  @Action()
+  cleanup() {
+    this.state = {
+      orderId: '',
+      receipt: null,
+      error: null,
+      apiStatus: API_STATUS.READY,
+    };
+  }
+
   async fetchOrders(payload: PostOrdersPayload) {
     try {
       this.updateStatus('REQUEST');
@@ -44,10 +54,10 @@ class OrdersStore {
     }
   }
 
-  async getOrders() {
+  async getOrders(orderId: string) {
     try {
       this.updateStatus('REQUEST');
-      const res = await fetchGetOrders({ id: this.state.orderId });
+      const res = await fetchGetOrders({ id: orderId });
       this.setState({ receipt: res.data.order });
 
       this.updateStatus('SUCCESS');

@@ -6,6 +6,11 @@ class CartStore {
   carList: Menu[] = [];
 
   @Action()
+  cleanup() {
+    this.carList = [];
+  }
+
+  @Action()
   getCartList() {
     return [...this.carList];
   }

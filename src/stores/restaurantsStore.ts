@@ -28,6 +28,15 @@ const state: State = {
 class RestaurantsStore {
   state = state;
 
+  @Action()
+  cleanup() {
+    this.state = {
+      data: [],
+      error: null,
+      apiStatus: API_STATUS.READY,
+    };
+  }
+
   async fetch() {
     try {
       this.updateStatus('REQUEST');
