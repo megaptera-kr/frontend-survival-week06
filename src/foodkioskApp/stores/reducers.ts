@@ -1,13 +1,13 @@
-import { Categories, MenuItem, Receipt, RestaurantItem, State } from '../types';
+import { Categories, Food, Order, Restaurant, State } from '../types';
 
 import { Action, Reducers } from './BaseStore';
 
-const fetchData = (state: State, action: Action<RestaurantItem[]>) => ({
+const fetchData = (state: State, action: Action<Restaurant[]>) => ({
   ...state,
   restaurants: action.payload,
 });
 
-const updateCategory = (state: State, action: Action<Categories>) => ({
+const clickCategory = (state: State, action: Action<Categories>) => ({
   ...state,
   category: action.payload,
 });
@@ -17,42 +17,42 @@ const search = (state: State, action: Action<string>) => ({
   query: action.payload,
 });
 
-const resetMenu = (state: State, action: Action<MenuItem[]>) => ({
+const resetFoods = (state: State, action: Action<Food[]>) => ({
   ...state,
-  addedMenus: action.payload,
+  addedFoods: action.payload,
 });
 
-const addMenu = (state: State, action: Action<MenuItem>) => ({
+const addFood = (state: State, action: Action<Food>) => ({
   ...state,
-  addedMenus: [...state.addedMenus, action.payload],
+  addedFoods: [...state.addedFoods, action.payload],
 });
 
-const deleteMenu = (state: State, action: Action<number>) => ({
+const deleteFood = (state: State, action: Action<number>) => ({
   ...state,
-  addedMenus: [
-    ...state.addedMenus.filter((_, index) => index !== action.payload),
+  addedFoods: [
+    ...state.addedFoods.filter((_, index) => index !== action.payload),
   ],
 });
 
-const getReceipt = (state: State, action: Action<Receipt>) => ({
+const getOrder = (state: State, action: Action<Order>) => ({
   ...state,
-  receipt: action.payload,
+  order: action.payload,
 });
 
-const deleteReceipt = (state: State, action: Action<Receipt>) => ({
+const deleteOrder = (state: State, action: Action<Order>) => ({
   ...state,
-  receipt: action.payload,
+  order: action.payload,
 });
 
 const reducers: Reducers<State> = {
-  fetchDataReducer: fetchData,
-  updateCategoryReducer: updateCategory,
-  searchReducer: search,
-  resetMenuReducer: resetMenu,
-  addMenuReducer: addMenu,
-  deleteMenuReducer: deleteMenu,
-  getReceiptReducer: getReceipt,
-  deleteReceiptReducer: deleteReceipt,
+  fetchData,
+  clickCategory,
+  search,
+  resetFoods,
+  addFood,
+  deleteFood,
+  getOrder,
+  deleteOrder,
 };
 
 export default reducers;

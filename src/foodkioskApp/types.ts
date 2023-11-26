@@ -1,38 +1,38 @@
 export type Categories = '전체' | '중식' | '한식' | '일식';
 
-export type MenuItem = {
+export type Food = {
   id: string;
   name: string;
   price: number;
 };
 
-export type Receipt = {
-  id?: string;
-  menu?: MenuItem[];
-  totalPrice?: number;
+export type Order = {
+  id: string;
+  menu: Food[];
+  totalPrice: number;
 };
 
-export type ReceiptResponse = {
-  receipt: Receipt;
+export type OrderResponse = {
+  id: string;
+  order: Order;
 };
 
-export type RestaurantItem = {
+export type Restaurant = {
   id: string;
   category: string;
   name: string;
-  menu: MenuItem[];
+  menu: Food[];
 };
 
-export type RestaurantsItem = {
-  restaurants: RestaurantItem[];
+export type Restaurants = {
+  restaurants: Restaurant[];
 };
-
-export type RenderType = 'none' | 'card' | 'notFound';
 
 export interface State {
-  restaurants: RestaurantItem[];
+  restaurants: Restaurant[];
+  filteredRestaurants: Restaurant[];
   category: Categories;
   query: string;
-  receipt: Receipt;
-  addedMenus: MenuItem[];
+  order: Partial<Order>;
+  addedFoods: Food[];
 }

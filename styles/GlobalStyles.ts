@@ -14,19 +14,27 @@ const GlobalStyles = createGlobalStyle`
 
     html,
     body,
+    
     #root {
-    height: 100%;
-    overflow: hidden;
+    
     }
 
     html {
         font-size: 62.5%;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+    
+    #root{
+        background: ${({ theme }) => theme.palette['green-900']};
+        border-radius: 3.2rem;
+        min-width: 37.5rem;
+        max-width: 42.8rem;
+        padding: 2rem 1.6rem;
+        margin: 4rem auto;
     }
 
     body {
-        font-family: 'Noto Sans KR', sans-serif;
-        background: ${({ theme }) => theme.palette['amber-100']};
-        font-size: 14px;
+        font-size: 1.4rem;
         letter-spacing: -0.25px;
     }
 
@@ -41,6 +49,7 @@ const GlobalStyles = createGlobalStyle`
     svg {
         flex-shrink: 0;
     }
+  }
 `;
 
 export default GlobalStyles;

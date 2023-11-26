@@ -8,10 +8,11 @@ import { State } from '../types';
 
 const initialState: State = {
   restaurants: [],
+  filteredRestaurants: [],
   category: '전체',
   query: '',
-  receipt: {},
-  addedMenus: [],
+  order: {},
+  addedFoods: [],
 };
 
 @singleton()

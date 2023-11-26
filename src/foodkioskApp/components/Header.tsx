@@ -1,4 +1,4 @@
-import Typography from '../../atoms/Typography';
+import { Typography } from '../../atoms';
 
 type HeaderProps = {
   title: string;
@@ -6,7 +6,7 @@ type HeaderProps = {
 
 export default function Header({ title }: HeaderProps) {
   return (
-    <Typography as='h1' variant='heading_03'>
+    <Typography as='h1' $color='white' $variant='heading_03'>
       {title}
     </Typography>
   );
