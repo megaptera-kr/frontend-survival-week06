@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 import { Stack, Input } from '../../atoms';
 
-import useSelector from '../hooks/useSelector';
-
 import useSearchRestaurants from '../hooks/useSearchRestaurants';
 
 type SearchRestaurantsProps = {
@@ -26,9 +24,7 @@ export default function SearchRestaurants({
   htmlFor,
   placeholder,
 }: SearchRestaurantsProps) {
-  const query = useSelector((state) => state.query);
-
-  const { handleSearchQuery } = useSearchRestaurants();
+  const { query, handleSearchQuery } = useSearchRestaurants();
 
   return (
     <Wrraper $direction='row'>

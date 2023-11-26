@@ -1,92 +1,54 @@
-import { screen, fireEvent, waitFor } from '@testing-library/react';
-
-import { container } from 'tsyringe';
+import { screen, fireEvent } from '@testing-library/react';
 
 import useRender from '../../../tests/utils';
 
 import SearchRestaurants from './SearchRestaurants';
 
-import Menus from './Menus';
+import context from '../utils/test_config';
 
-import FetchController from './FetchController';
+const handleSearchQuery = jest.fn();
+
+jest.mock('../hooks/useSearchRestaurants', () => () => ({
+  handleSearchQuery,
+}));
 
 describe('SearchRestaurants Render', () => {
-  it('renders label and input', () => {
-    useRender(
-      <SearchRestaurants
-        htmlFor='input-검색'
-        placeholder='식당 이름을 입력해 주세요.'
-      />,
-    );
-
-    expect(screen.getByLabelText(/input-검색/)).toBeInTheDocument();
-    expect(
-      screen.getByPlaceholderText(/식당 이름을 입력해 주세요./),
-    ).toBeInTheDocument();
-  });
-});
-
-describe('SearchRestaurants Input Events', () => {
-  beforeEach(() => {
-    container.clearInstances();
-  });
-
-  it('return 메 when an event occurs in the input', () => {
-    useRender(
-      <SearchRestaurants
-        htmlFor='input-검색'
-        placeholder='식당 이름을 입력해 주세요.'
-      />,
-    );
-
-    const input = screen.getByPlaceholderText(
-      /식당 이름을 입력해 주세요./,
-    ) as HTMLInputElement;
-
-    fireEvent.change(input, { target: { value: '메' } });
-
-    expect(input).toHaveValue('메');
-  });
-});
-
-describe('SearchRestaurants Input Events', () => {
-  beforeEach(() => {
-    container.clearInstances();
-  });
-
-  it('return 메리김밥은 존재하고 혹동고래카레는 존재하지 않는다. when an event occurs in the input', async () => {
-    useRender(
-      <>
+  context('view', () => {
+    it('label and input', () => {
+      useRender(
         <SearchRestaurants
           htmlFor='input-검색'
           placeholder='식당 이름을 입력해 주세요.'
-        />
-        <Menus />
-        <FetchController />
-      </>,
-    );
+        />,
+      );
 
-    const input = screen.getByPlaceholderText(
-      /식당 이름을 입력해 주세요./,
-    ) as HTMLInputElement;
+      expect(screen.getByLabelText(/input-검색/)).toBeInTheDocument();
+      expect(
+        screen.getByPlaceholderText(/식당 이름을 입력해 주세요./),
+      ).toBeInTheDocument();
+    });
+  });
 
-    fireEvent.change(input, { target: { value: '메' } });
-
-    await waitFor(() => {
-      const text = screen.getByText(/메리김밥/);
-      expect(text).toBeInTheDocument();
+  context('handleSearchQuery event', () => {
+    beforeEach(() => {
+      handleSearchQuery.mockClear();
     });
 
-    await waitFor(() => {
-      const text = screen.queryByText(/혹등고래카레/i);
-      expect(text).toBeNull();
-    });
+    it('value is 메 when event occurs in the input', () => {
+      useRender(
+        <SearchRestaurants
+          htmlFor='input-검색'
+          placeholder='식당 이름을 입력해 주세요.'
+        />,
+      );
 
-    fireEvent.change(input, { target: { value: '' } });
+      const input = screen.getByPlaceholderText(
+        /식당 이름을 입력해 주세요./,
+      ) as HTMLInputElement;
 
-    await waitFor(() => {
-      const text = screen.getByText(/혹등고래카레/i);
-      expect(text).toBeInTheDocument();
+      fireEvent.change(input, { target: { value: '메' } });
+
+      expect(input).toHaveValue('메');
     });
   });
 });

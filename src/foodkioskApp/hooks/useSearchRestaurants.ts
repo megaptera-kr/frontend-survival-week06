@@ -1,8 +1,12 @@
 import { ChangeEvent, useCallback } from 'react';
 
+import useSelector from './useSelector';
+
 import useDispatch from './useDispatch';
 
 export default function useSearchRestaurants() {
+  const query = useSelector((state) => state.query);
+
   const dispatch = useDispatch();
 
   const handleSearchQuery = useCallback(
@@ -18,6 +22,7 @@ export default function useSearchRestaurants() {
   );
 
   return {
+    query,
     handleSearchQuery,
   };
 }

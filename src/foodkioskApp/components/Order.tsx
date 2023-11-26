@@ -32,6 +32,8 @@ export default function Order() {
 
   const { id, menu, totalPrice } = order;
 
+  const totalPriceText = totalPrice?.toLocaleString();
+
   return (
     <Stack $direction='column' id='receipt-wrraper'>
       {isExistOrder ? (
@@ -53,20 +55,23 @@ export default function Order() {
             <ImportantTypo as='h3' $variant='heading_01' $color='black'>
               주문목록
             </ImportantTypo>
-            {menu?.map(({ name, price }) => (
-              <Typography
-                as='p'
-                $variant='body_02'
-                $color='black'
-                key={Math.random()}
-              >
-                {`${name}(${price.toLocaleString()}원)`}
-              </Typography>
-            ))}
+            {menu?.map(({ name, price }) => {
+              const priceText = price.toLocaleString();
+              return (
+                <Typography
+                  as='p'
+                  $variant='body_02'
+                  $color='black'
+                  key={Math.random()}
+                >
+                  {`${name}(${priceText}원)`}
+                </Typography>
+              );
+            })}
           </OrderListWrraper>
 
           <ImportantTypo as='h3' $variant='heading_01' $color='black'>
-            {`총 가격: ${totalPrice?.toLocaleString()}원`}
+            {`총 가격: ${totalPriceText}원`}
           </ImportantTypo>
         </OrderWrraer>
       ) : (

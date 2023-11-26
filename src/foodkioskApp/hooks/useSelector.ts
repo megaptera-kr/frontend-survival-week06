@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 import { container } from 'tsyringe';
 
 import { useEffect, useRef } from 'react';
@@ -24,7 +23,6 @@ export default function useSelector<T>(selector: Selector<T>): T {
       if (newState !== state.current) {
         forceUpdate();
         state.current = newState;
-        // setState(newState);
       }
     };
 

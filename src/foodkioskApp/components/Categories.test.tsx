@@ -1,57 +1,47 @@
-import { screen, fireEvent, waitFor } from '@testing-library/react';
-
-import { container } from 'tsyringe';
+import { screen, fireEvent } from '@testing-library/react';
 
 import useRender from '../../../tests/utils';
 
+import context from '../utils/test_config';
+
 import Categories from './Categories';
-
-import Menus from './Menus';
-
-import FetchController from './FetchController';
 
 import categories from '../constans/categories';
 
+const handleClickCategory = jest.fn();
+
+jest.mock('../hooks/useClickCategory', () => () => ({
+  handleClickCategory,
+}));
+
 describe('Categories Render', () => {
-  beforeEach(() => {
-    container.clearInstances();
-  });
+  context('view', () => {
+    it('all category buttons', () => {
+      useRender(<Categories />);
 
-  it('render all category buttons', () => {
-    useRender(<Categories />);
+      categories.forEach((category) => {
+        const text = screen.getByText(category);
 
-    categories.forEach((category) => {
-      const text = screen.getByText(category);
-
-      expect(text).toBeInTheDocument();
+        expect(text).toBeInTheDocument();
+      });
     });
   });
-});
 
-describe('Get Correct Data By Categories Filter', () => {
-  beforeEach(() => {
-    container.clearInstances();
-  });
+  context('handleClickCategory event', () => {
+    beforeEach(() => {
+      handleClickCategory.mockClear();
+    });
 
-  const expectedValue = ['로드스시', '메가반점', '메리김밥', '혹등고래카레'];
+    categories.forEach((category) => {
+      it('calls event when a category is clicked', () => {
+        useRender(<Categories />);
 
-  categories.forEach((category, idx) => {
-    it(`return ${expectedValue[idx]}`, async () => {
-      useRender(
-        <>
-          <Categories />
-          <Menus />
-          <FetchController />
-        </>,
-      );
+        const categoryButton = screen.getByText(category);
+        fireEvent.click(categoryButton);
 
-      const button = screen.getByRole('button', { name: category });
-
-      fireEvent.click(button);
-
-      await waitFor(() => {
-        const text = screen.getByText(expectedValue[idx]);
-        expect(text).toBeInTheDocument();
+        expect(handleClickCategory.mock.calls[0][0].target.value).toBe(
+          category,
+        );
       });
     });
   });

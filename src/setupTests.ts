@@ -4,17 +4,8 @@ import 'whatwg-fetch';
 
 import server from './mocks/server';
 
-beforeAll(() => {
-  console.log('beforeAll');
-  return server.listen({ onUnhandledRequest: 'warn' });
-});
+beforeAll(() => server.listen({ onUnhandledRequest: 'warn' }));
 
-afterAll(() => {
-  console.log('close');
-  return server.close();
-});
+afterAll(() => server.close());
 
-afterEach(() => {
-  console.log('resetHandlers');
-  return server.resetHandlers();
-});
+afterEach(() => server.resetHandlers());

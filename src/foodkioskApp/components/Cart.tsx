@@ -64,7 +64,9 @@ export default function Cart({ title }: CartProps) {
             return (
               <Item $direction='row' key={Math.random()}>
                 <Typography as='span' $color='white' $variant='body_03'>
-                  {name}({priceText}
+                  {name}
+                  (
+                  {priceText}
                   원)
                 </Typography>
                 <Button type='button' onClick={() => deleteFood(index)}>
@@ -107,7 +109,7 @@ export default function Cart({ title }: CartProps) {
         onClick={() => {
           orderMenus(totalPrice, addedFoods);
         }}
-        // disabled={disabled}
+        disabled={disabled}
         name='주문하기'
       >
         {addedLength ? '주문하기' : '메뉴를 선택해주세요.'}

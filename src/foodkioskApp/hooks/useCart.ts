@@ -15,7 +15,7 @@ export default function useCart() {
 
   const totalPrice = useMemo(
     () => addedFoods.reduce((acc, cur) => acc + (cur.price || 0), 0),
-    [addedFoods]
+    [addedFoods],
   );
 
   const disabled = useMemo(() => addedFoods.length === 0, [addedFoods]);
@@ -24,14 +24,14 @@ export default function useCart() {
     (item: Food) => {
       dispatch({ type: 'addFood', payload: item });
     },
-    [dispatch]
+    [dispatch],
   );
 
   const deleteFood = useCallback(
     (idx: number) => {
       dispatch({ type: 'deleteFood', payload: idx });
     },
-    [dispatch]
+    [dispatch],
   );
 
   const resetFoods = useCallback(() => {
@@ -45,25 +45,28 @@ export default function useCart() {
         payload: order,
       });
     },
-    [dispatch]
+    [dispatch],
   );
 
-  const fetchOrder = async (orderId: string) => {
-    try {
-      const response = await fetch(`${ordersURL}/${orderId}`);
+  const fetchOrder = useCallback(
+    async (orderId: string) => {
+      try {
+        const response = await fetch(`${ordersURL}/${orderId}`);
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const { order } = (await response.json()) as Omit<OrderResponse, 'id'>;
+
+        getOrder(order);
+        resetFoods();
+      } catch (error) {
+        resetFoods();
       }
-
-      const { order } = (await response.json()) as Omit<OrderResponse, 'id'>;
-
-      getOrder(order);
-      resetFoods();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    },
+    [getOrder, resetFoods],
+  );
 
   const orderMenus = useCallback(
     async (total: number, menus: Food[]) => {
@@ -84,16 +87,13 @@ export default function useCart() {
 
       const data = (await response.json()) as Omit<OrderResponse, 'order'>;
 
-      console.log(data);
-
       const { id } = data;
 
       if (id) {
-        console.log('실행2');
-        // fetchOrder(id);
+        fetchOrder(id);
       }
     },
-    [dispatch, resetFoods, getOrder]
+    [dispatch, fetchOrder],
   );
 
   return {
