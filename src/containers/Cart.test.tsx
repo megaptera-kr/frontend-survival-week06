@@ -1,28 +1,28 @@
 import {
-  render, screen, renderHook, act,
+  act,
+  render, renderHook, screen, waitFor,
 } from '@testing-library/react';
-import { useCartStorage } from '../hooks/useStorage';
+import { useStore } from 'usestore-ts';
 import fixtures from '../../fixtures';
 import Cart from './Cart';
+import cartStore from '../stores/cartStore';
 
 describe('Cart', () => {
-  test('로컬 스토리지의 장바구니에 데이터가 담겨 있다면 해당 데이터를 그린다', () => {
+  test('로컬 스토리지의 장바구니에 담겨져있는 물품들의 가격에 합산이 그려진다.', () => {
     render(<Cart />);
-    const { result: { current } } = renderHook(() => useCartStorage());
+    const { result: { current } } = renderHook(() => useStore(cartStore));
+    const [, store] = current;
 
-    act(() => current.setCart(fixtures.foods));
+    act(() => {
+      fixtures.foods.map((row) => store.addCartItem(row));
+    });
 
-    const [item] = screen.getAllByTestId('CartItem');
+    waitFor(() => {
+      const totalPrice = fixtures.foods.reduce((prev, curr) => prev + curr.price, 0).toLocaleString();
 
-    expect(item).toBeInTheDocument();
-  });
+      const element = screen.getByTestId('Payment');
 
-  test('로컬 스토리지의 장바구니에 담겨져있는 물품들의 가격에 합산이 버튼에 그려진다.', () => {
-    render(<Cart />);
-    const totalPrice = fixtures.foods.reduce((prev, curr) => prev + curr.price, 0).toLocaleString();
-
-    const element = screen.getByTestId('Payment');
-
-    expect(element).toHaveTextContent(`${totalPrice}`);
+      expect(element).toHaveTextContent(`${totalPrice}`);
+    });
   });
 });

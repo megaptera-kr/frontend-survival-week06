@@ -15,16 +15,13 @@ function MenuItem({
 
   return (
     <Grid gridTemplateColumns="200px 100px" rowGap={16}>
-      {`${menuItem.name}(${menuItem.price.toLocaleString()})원`}
-      {onClick && (
-        <button
-          data-testid="PickFoodBtn"
-          name={`#${menuItem.name}${btnLabel}`}
-          onClick={handleClick}
-        >
-          {btnLabel}
-        </button>
-      )}
+      <button
+        data-testid="PickFoodBtn"
+        name={`#${menuItem.name}${btnLabel}`}
+        onClick={handleClick}
+      >
+        {`${menuItem.name} (${menuItem.price.toLocaleString()})원`}
+      </button>
     </Grid>
   );
 }

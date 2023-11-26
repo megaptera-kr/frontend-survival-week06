@@ -1,45 +1,29 @@
-import { useState } from 'react';
-import { fetchPostOrders } from '../utils/apiService';
-import { PostOrdersResponse } from '../../types';
-import { ApiError } from '../../api';
-import { useCartStorage, useReceiptStorage } from './useStorage';
+import { useStore } from 'usestore-ts';
+
+import { useReceiptStorage } from './useStorage';
 import createReceiptData from '../utils/createReceiptData';
+import cartStore from '../stores/cartStore';
+import ordersStore from '../stores/ordersStore';
 
-const useFetchOrders = () => {
-  const [data, setData] = useState<any>();
-  const [error, setError] = useState('');
-  const { cart, setCart } = useCartStorage();
+const usePayment = () => {
   const { setReceipt } = useReceiptStorage();
-
-  const request = async () => {
-    try {
-      const receipt = createReceiptData(cart);
-      const res = await fetchPostOrders(receipt);
-      setData(res);
-
-      return res;
-    } catch (error: unknown) {
-      const err = error as ApiError;
-
-      setError(err.message);
-    }
-  };
+  const [, order] = useStore(ordersStore);
+  const [{ cartArray }, cart] = useStore(cartStore);
 
   const payment = async () => {
     try {
-      const res = await request();
+      const receipt = createReceiptData(cartArray);
+      const response = await order.payment(receipt);
 
-      setCart([]);
+      cart.clearCart();
 
-      res && setReceipt(res);
+      response && setReceipt(response);
     } catch (error) {
       console.error(error);
     }
   };
 
-  return {
-    request, data, error, payment,
-  };
+  return payment;
 };
 
-export default useFetchOrders;
+export default usePayment;

@@ -34,13 +34,19 @@ interface PostOrdersPayload {
   totalPrice: number;
 }
 
+interface GetOrdersPayload {
+  id: string;
+}
+
 interface Receipt {
   id: string;
   menu: MenuList;
   totalPrice: number;
 }
 
-type PostOrdersResponse = Receipt;
+type GetOrdersResponse = Receipt;
+
+type PostOrdersResponse = string;
 
 export {
   foodCategory,
@@ -55,4 +61,6 @@ export {
   Receipt,
   PostOrdersResponse,
   GetRestaurantsResponse,
+  GetOrdersPayload,
+  GetOrdersResponse,
 };

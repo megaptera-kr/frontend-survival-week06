@@ -53,6 +53,7 @@
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
+    "jest-css-modules-transform": "^4.4.2",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

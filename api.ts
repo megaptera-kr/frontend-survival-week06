@@ -1,5 +1,6 @@
 export const Path = {
   orders: '/orders',
+  getOrders: '/orders/:id',
   restaurants: '/restaurants',
 };
 

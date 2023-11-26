@@ -1,37 +1,32 @@
+import { useEffect } from 'react';
+import { useStore } from 'usestore-ts';
 import Input from '../components/Input';
 import ResturantsList from './ResturantsList';
 
 import Select from '../components/Select';
-import useInput from '../hooks/useResturantFilter';
-import useFetchResturant from '../hooks/useFetchResturant';
-import { RestaurantList } from '../../types';
-import filterList from '../utils/filterList';
+import useInput from '../hooks/useInput';
 import Grid from '../components/Grid';
+import filterList from '../utils/filterList';
+import restaurantsStore from '../stores/restaurantsStore';
 
 export function Loading() {
   return <span>Loading...</span>;
 }
 
-const useRestaurantListFilter = (name: string, category: string) => {
-  const { data } = useFetchResturant();
-
-  const filtered = data
-    && (filterList(data, [
-      { category: 'category', keyword: category },
-      { category: 'name', keyword: name },
-    ]) as RestaurantList);
-
-  return {
-    data,
-    filtered,
-  };
-};
-
 function Restaurants() {
   const { value: name, handleChange: handleKeywordChange } = useInput('');
   const { value: category, handleChange: handleCategoryClick } = useInput('');
 
-  const { filtered } = useRestaurantListFilter(name, category);
+  const [{ state }, store] = useStore(restaurantsStore);
+
+  // 1. forceUpdate전달해줘야함.
+  // 2. 상태가 업데이트 되었을 때 마다 publish 호출해줘야함.
+
+  useEffect(() => {
+    store.fetch();
+  }, []);
+
+  const filtered = filterList(state.data, [{ category: 'name', keyword: name }, { category: 'category', keyword: category }]);
 
   return (
     <div data-testid="Restaurants" className="row">
@@ -58,7 +53,7 @@ function Restaurants() {
           <li>종류</li>
           <li>메뉴</li>
         </Grid>
-        {filtered && <ResturantsList resturantsList={filtered} />}
+        {store.state.apiStatus === 'SUCCESS' && <ResturantsList resturantsList={filtered} />}
       </section>
     </div>
   );

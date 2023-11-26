@@ -1,15 +1,16 @@
+import { useStore } from 'usestore-ts';
 import { RestaurantList } from '../../types';
 import MenuItem from '../components/MenuItem';
-import { useCartStorage } from '../hooks/useStorage';
 import { Loading } from './Resturants';
 import Grid from '../components/Grid';
+import cartStore from '../stores/cartStore';
 
 function ResturantsList({
   resturantsList,
 }: {
   resturantsList: RestaurantList;
 }) {
-  const { handleAddCart } = useCartStorage();
+  const [, store] = useStore(cartStore);
 
   if (!resturantsList) return <Loading />;
 
@@ -30,7 +31,7 @@ function ResturantsList({
                     <MenuItem
                       menuItem={menuItem}
                       index={index}
-                      onClick={handleAddCart}
+                      onClick={({ menuItem }) => { store.addCartItem(menuItem); }}
                     />
                   </li>
                 ))}
