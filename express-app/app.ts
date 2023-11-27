@@ -6,15 +6,15 @@ const port = 3000;
 const app = express();
 
 interface Food {
-  id: string,
-  name: string,
-  price: number,
+  id: string;
+  name: string;
+  price: number;
 }
 
 interface Order {
-  id: string,
-  menu: Food[],
-  totalPrice: number,
+  id: string;
+  menu: Food[];
+  totalPrice: number;
 }
 
 const state: { orders: Order[] } = {
@@ -43,10 +43,7 @@ app.get('/orders/:id', (req, res) => {
 });
 
 app.post('/orders', (req, res) => {
-  const {
-    menu,
-    totalPrice,
-  } = req.body;
+  const { menu, totalPrice } = req.body;
 
   const order = {
     id: Date.now().toString(),
@@ -54,10 +51,7 @@ app.post('/orders', (req, res) => {
     totalPrice,
   };
 
-  state.orders = [
-    ...state.orders,
-    order,
-  ];
+  state.orders = [...state.orders, order];
 
   res.status(201).send({ id: order.id });
 });

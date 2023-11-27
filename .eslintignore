@@ -3,3 +3,5 @@
 /dist/
 .parcel-cache
 *.d.ts
+jest.polyfills.js
+/tests/integration/
