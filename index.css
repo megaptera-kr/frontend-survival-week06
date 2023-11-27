@@ -1,0 +1,63 @@
+html, body, ul, li{
+  margin: 0;
+  padding:0;
+}
+
+li{
+  list-style:none;
+}
+
+.categories{
+  display:flex;
+  gap:10px;
+}
+.categories .selected{
+    background:#000;
+    color:#fff;
+}
+
+.restaurants{
+  margin-top:50px;
+}
+
+.restaurants > li{
+  display:flex;
+  padding:10px;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  align-items: center;
+  border:1px solid #bebebe;
+  border-radius:4px;
+}
+
+.restaurants > li:nth-child(n+2){
+  margin-top:10px;
+}
+
+.restaurants > li > div{
+  flex-basis: 40%;
+}
+
+.menues{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.menues li{
+  flex:1 0 100%;
+}
+
+.cart {
+  padding:20px;
+  border:1px solid #bebebe;
+}
+
+.cart-footer{
+  display:flex;
+  gap:10px;
+}
+
+.cart-footer .price{
+  font-weight:bold;
+}
