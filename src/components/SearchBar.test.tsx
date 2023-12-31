@@ -6,10 +6,17 @@ import fixtures from '../../fixtures';
 describe('SearchBar', () => {
   const categories = getCategories(fixtures.restaurants);
 
+  const filterText = '';
+  const setFilterText = jest.fn();
+  const setFilterCategory = jest.fn();
+
   it('검색 필드 렌더링', () => {
     render(
       <SearchBar
         categories={categories}
+        filterText={filterText}
+        setFilterText={setFilterText}
+        setFilterCategory={setFilterCategory}
       />,
     );
 
@@ -20,6 +27,9 @@ describe('SearchBar', () => {
     render(
       <SearchBar
         categories={categories}
+        filterText={filterText}
+        setFilterText={setFilterText}
+        setFilterCategory={setFilterCategory}
       />,
     );
 
