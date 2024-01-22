@@ -19,7 +19,7 @@ export default function FilterableRestaurantTable() {
   );
 
   const filteredRestaurants = query
-    ? restaurants.filter((restaurant) => restaurant.name.includes(query))
+    ? restaurants.filter((restaurant) => restaurant.name.includes(query.trim()))
     : restaurants;
 
   const filteredCategories = category === '전체' ? filteredRestaurants : filteredRestaurants.filter((restaurant) => restaurant.category === category);

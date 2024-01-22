@@ -10,7 +10,7 @@ export default function TextField({ setQuery, query, placeholderText }:TextField
   };
   return (
     <>
-      <label htmlFor="search-id">검 색</label>
+      <label htmlFor="search-id">검색</label>
       <input id="search-id" placeholder={placeholderText} value={query} onChange={handleChangeQuery} />
     </>
   );

@@ -11,14 +11,13 @@ export default function OrderSummary({ selectedMenu }:OrderSummary) {
     <div>
       <h2>
         주문내역
-        {' '}
         {menuCount}
         개
       </h2>
       <p>
         총 결제 예상금액
         {' '}
-        {sum}
+        {sum.toLocaleString()}
         원
       </p>
     </div>

@@ -13,7 +13,7 @@ describe('SearchBar', () => {
 
   it('검색창이 존재한다.', () => {
     renderSearchBar();
-    expect(screen.getByLabelText('검 색')).toBeInTheDocument();
+    expect(screen.getByLabelText('검색')).toBeInTheDocument();
   });
 
   it('모든 카테고리 버튼이 전체를 포함한다', () => {

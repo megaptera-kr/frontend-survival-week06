@@ -13,6 +13,13 @@ export default function Cart() {
   const handleClearMenu = () => {
     store.clear();
   };
+
+  const handleOrderMenu = () => {
+    if (!store.menu.length) {
+      return;
+    }
+    store.clear();
+  };
   return (
     <div>
       <OrderSummary selectedMenu={store.menu} />
@@ -22,7 +29,7 @@ export default function Cart() {
           <CartItem key={key} handleRemoveMenu={handleRemoveMenu} index={index} food={menu} />
         );
       })}
-      <OrderBtn clearMenu={handleClearMenu} />
+      <OrderBtn clearMenu={handleClearMenu} orderMenu={handleOrderMenu} />
     </div>
   );
 }
