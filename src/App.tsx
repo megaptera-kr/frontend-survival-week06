@@ -1,34 +1,13 @@
 import KioskTitle from './components/KioskTitle';
 import Cart from './components/Cart';
+import SearchBar from './components/SearchBar';
 
 export default function App() {
   return (
     <div>
       <KioskTitle title='푸드코트 키오스크' />
       <Cart />
-      <div>
-        <div>
-          <div>
-            <label htmlFor='search'>검색</label>
-            <input type='text' id='search' placeholder='검색..' />
-          </div>
-        </div>
-        <ul
-          style={{
-            display: 'flex',
-            padding: 0,
-            listStyle: 'none',
-          }}
-        >
-          <li
-            style={{
-              marginRight: '1rem',
-            }}
-          >
-            <button type='button'>전체</button>
-          </li>
-        </ul>
-      </div>
+      <SearchBar />
       <div>
         <table>
           <thead>
