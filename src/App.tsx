@@ -1,7 +1,9 @@
+import KioskTitle from './components/KioskTitle';
+
 export default function App() {
   return (
     <div>
-      <h1>푸드코트 키오스크</h1>
+      <KioskTitle title='푸드코트 키오스크' />
       <div style={{ marginBottom: '3rem' }}>
         <h2>주문 바구니</h2>
         <ul style={{ width: '20%' }}>
