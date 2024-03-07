@@ -1,11 +1,16 @@
+import { HTMLAttributes } from 'react';
+
+import { moneyformat } from '../utils/common';
+
 import Food from '../types/FoodType';
 
 type MenuItemProps = {
   menuItem: Food;
-};
+} & HTMLAttributes<Element>;
 
-export default function MenuItem({ menuItem }: MenuItemProps) {
+export default function MenuItem({ menuItem, children }: MenuItemProps) {
   const { name, price } = menuItem;
+
   return (
     <li
       style={{
@@ -14,11 +19,10 @@ export default function MenuItem({ menuItem }: MenuItemProps) {
       }}
     >
       <span style={{ margin: '0 auto' }}>
-        {name}({price})
+        {name}
+        <span>({moneyformat(price)}원)</span>
       </span>
-      <button style={{ marginLeft: '.5rem' }} type='button'>
-        선택
-      </button>
+      {children}
     </li>
   );
 }
