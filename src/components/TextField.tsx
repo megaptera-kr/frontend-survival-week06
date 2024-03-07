@@ -1,14 +1,23 @@
 import useFieldRef from '../hooks/useFieldRef';
-import useTextField from '../hooks/useTextField';
 
 type TextFieldProps = {
   label: string;
   placeholder?: string;
+  text: string;
+  setText: (v: string) => void;
 };
 
-export default function TextField({ label, placeholder }: TextFieldProps) {
+export default function TextField({
+  label,
+  placeholder = '',
+  text,
+  setText,
+}: TextFieldProps) {
   const [, current] = useFieldRef('textfield');
-  const [text, setText] = useTextField();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setText(event.target.value);
+  };
 
   return (
     <div
@@ -22,10 +31,10 @@ export default function TextField({ label, placeholder }: TextFieldProps) {
       </label>
       <input
         type='text'
-        placeholder={placeholder || ''}
+        placeholder={placeholder}
         id={current}
         value={text}
-        onChange={setText}
+        onChange={handleChange}
       />
     </div>
   );

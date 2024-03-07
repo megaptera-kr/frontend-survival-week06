@@ -9,10 +9,10 @@ import Category from '../types/CategoryType';
 jest.mock('../hooks/useFetchCategories');
 
 describe('CategoryButtons: CategoryButton', () => {
-  const mockHandleCategoryButton = jest.fn();
+  const mockSetCategoryName = jest.fn();
 
   it('render collectly', () => {
-    render(<CategoryButtons handleCategoryButton={mockHandleCategoryButton} />);
+    render(<CategoryButtons setCategoryName={mockSetCategoryName} />);
 
     const { categories } = fixtures;
 

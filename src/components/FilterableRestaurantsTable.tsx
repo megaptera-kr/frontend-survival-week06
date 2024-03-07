@@ -1,19 +1,21 @@
-import { useState } from 'react';
-
 import SearchBar from './SearchBar';
 import RestaurantTable from './RestaurantTable';
 
-export default function FilterableRestaurantsTable() {
-  const [buttonValue, setButtonValue] = useState<string>('');
+import useSearchField from '../hooks/useSearchField';
+import useButtonField from '../hooks/useButtonField';
 
-  const handleCategoryButton = (value: string) => {
-    setButtonValue(value);
-  };
+export default function FilterableRestaurantsTable() {
+  const [searchText, setSearchText] = useSearchField('');
+  const [buttonName, setButtonName] = useButtonField('전체');
 
   return (
     <>
-      <SearchBar handleCategoryButton={handleCategoryButton} />
-      <RestaurantTable buttonValue={buttonValue} />
+      <SearchBar
+        searchText={searchText}
+        setSearchText={setSearchText}
+        setButtonName={setButtonName}
+      />
+      <RestaurantTable restaurantName={searchText} categoryName={buttonName} />
     </>
   );
 }

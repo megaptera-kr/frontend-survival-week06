@@ -3,27 +3,33 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import CategoryButton from './CategoryButton';
 
 describe('ComponentTest: CategoryButton', () => {
-  const mockContent = '한식';
-  const mockClickButton = jest.fn();
+  const mockCategoryName = '한식';
+  const mockSetCategoryName = jest.fn();
 
   it('render collectly', () => {
     render(
-      <CategoryButton content={mockContent} clickButton={mockClickButton} />,
+      <CategoryButton
+        categoryName={mockCategoryName}
+        setCategoryName={mockSetCategoryName}
+      />,
     );
 
-    screen.getByText(mockContent);
-    screen.getByRole('button', { name: mockContent });
+    screen.getByText(mockCategoryName);
+    screen.getByRole('button', { name: mockCategoryName });
   });
 
   it('button can be clicked with value', () => {
     render(
-      <CategoryButton content={mockContent} clickButton={mockClickButton} />,
+      <CategoryButton
+        categoryName={mockCategoryName}
+        setCategoryName={mockSetCategoryName}
+      />,
     );
 
-    const button = screen.getByRole('button', { name: mockContent });
+    const button = screen.getByRole('button', { name: mockCategoryName });
 
     fireEvent.click(button);
-    expect(mockClickButton).toHaveBeenCalledTimes(1);
-    expect(mockClickButton).toHaveBeenCalledWith(mockContent);
+    expect(mockSetCategoryName).toHaveBeenCalledTimes(1);
+    expect(mockSetCategoryName).toHaveBeenCalledWith(mockCategoryName);
   });
 });

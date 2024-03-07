@@ -5,9 +5,17 @@ import SearchBar from './SearchBar';
 jest.mock('../hooks/useFetchCategories');
 
 test('ComponentTest: SearchBar', () => {
-  const handleCategoryButton = jest.fn();
+  const mockSearchText = '';
+  const mockSetSearchText = jest.fn();
+  const mockSetButtonName = jest.fn();
 
-  render(<SearchBar handleCategoryButton={handleCategoryButton} />);
+  render(
+    <SearchBar
+      searchText={mockSearchText}
+      setSearchText={mockSetSearchText}
+      setButtonName={mockSetButtonName}
+    />,
+  );
 
   screen.getByLabelText('검색');
   screen.getByPlaceholderText('식당 이름...');

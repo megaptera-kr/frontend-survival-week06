@@ -1,16 +1,16 @@
 import React from 'react';
 
 type CategoryButtonProps = {
-  content: string;
-  clickButton: (v: string) => void;
+  categoryName: string;
+  setCategoryName: (v: string) => void;
 };
 
 export default function CategoryButton({
-  content,
-  clickButton,
+  categoryName,
+  setCategoryName,
 }: CategoryButtonProps) {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    clickButton(e.currentTarget.value);
+    setCategoryName(e.currentTarget.value);
   };
 
   return (
@@ -19,8 +19,8 @@ export default function CategoryButton({
         marginRight: '1rem',
       }}
     >
-      <button type='button' value={content} onClick={handleClick}>
-        {content}
+      <button type='button' value={categoryName} onClick={handleClick}>
+        {categoryName}
       </button>
     </li>
   );

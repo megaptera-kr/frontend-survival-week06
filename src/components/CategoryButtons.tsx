@@ -5,11 +5,11 @@ import useFetchCategories from '../hooks/useFetchCategories';
 import Category from '../types/CategoryType';
 
 type CategoryButtonsProps = {
-  handleCategoryButton: (v: string) => void;
+  setCategoryName: (v: string) => void;
 };
 
 export default function CategoryButtons({
-  handleCategoryButton,
+  setCategoryName,
 }: CategoryButtonsProps) {
   const { categories } = useFetchCategories();
 
@@ -24,8 +24,8 @@ export default function CategoryButtons({
       {[{ id: 0, name: '전체' }, ...categories].map((category: Category) => (
         <CategoryButton
           key={category.id}
-          content={category.name}
-          clickButton={handleCategoryButton}
+          categoryName={category.name}
+          setCategoryName={setCategoryName}
         />
       ))}
     </ul>
