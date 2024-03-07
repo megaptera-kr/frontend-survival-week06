@@ -9,6 +9,10 @@ const categories: Category[] = [
     id: 2,
     name: '일식',
   },
+  {
+    id: 3,
+    name: '중식',
+  },
 ];
 
 export default categories;

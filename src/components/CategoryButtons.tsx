@@ -21,7 +21,7 @@ export default function CategoryButtons({
         listStyle: 'none',
       }}
     >
-      {categories.map((category: Category) => (
+      {[{ id: 0, name: '전체' }, ...categories].map((category: Category) => (
         <CategoryButton
           key={category.id}
           content={category.name}
