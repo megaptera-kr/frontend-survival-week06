@@ -1,4 +1,8 @@
-export default function RestaurantTable() {
+type RestaurantTableProps = {
+  buttonValue: string;
+};
+
+export default function RestaurantTable({ buttonValue }: RestaurantTableProps) {
   return (
     <div>
       <table>
