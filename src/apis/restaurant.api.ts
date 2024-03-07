@@ -16,12 +16,12 @@ class RestaurantAPI {
   }
 
   async read({
-    restaurantName = '',
     categoryName = '전체',
+    restaurantName = '',
   }: QueryStringType): Promise<Restaurant[]> {
     const params = new URLSearchParams();
-    params.append('restaurantName', restaurantName.trim().toLowerCase());
     params.append('categoryName', categoryName);
+    params.append('restaurantName', restaurantName.trim().toLowerCase());
     this.url.search = params.toString();
 
     const response = await fetch(this.url);

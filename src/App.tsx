@@ -1,13 +1,13 @@
 import KioskTitle from './components/KioskTitle';
 import Cart from './components/Cart';
-import FilterableRestaurantsTable from './components/FilterableRestaurantsTable';
+import FilterableRestaurantTable from './components/FilterableRestaurantTable';
 
 export default function App() {
   return (
     <div>
       <KioskTitle title='푸드코트 키오스크' />
       <Cart />
-      <FilterableRestaurantsTable />
+      <FilterableRestaurantTable />
       <div
         style={{
           width: '50%',

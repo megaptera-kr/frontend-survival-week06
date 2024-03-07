@@ -5,8 +5,8 @@ import RestaurantAPI from '../apis/restaurant.api';
 import Restaurant from '../types/RestaurantType';
 
 type useFetchRestaurantParamType = {
-  restaurantName: string;
   categoryName: string;
+  restaurantName: string;
 };
 
 type useFetchRestaurantsReturnType = {
@@ -14,8 +14,8 @@ type useFetchRestaurantsReturnType = {
 };
 
 function useFetchRestaurants({
-  restaurantName,
   categoryName,
+  restaurantName,
 }: useFetchRestaurantParamType): useFetchRestaurantsReturnType {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
 
@@ -24,14 +24,14 @@ function useFetchRestaurants({
   useEffect(() => {
     const fetchData = async () => {
       const data: Restaurant[] = await api.read({
-        restaurantName,
         categoryName,
+        restaurantName,
       });
       setRestaurants(data);
     };
 
     fetchData();
-  }, []);
+  }, [categoryName, restaurantName]);
 
   return { restaurants };
 }

@@ -1,3 +1,9 @@
+import RestaurantTableRow from './RestaurantTableRow';
+
+import useFetchRestaurants from '../hooks/useFetchRestaurants';
+
+import Restaurant from '../types/RestaurantType';
+
 type RestaurantTableProps = {
   restaurantName: string;
   categoryName: string;
@@ -7,6 +13,8 @@ export default function RestaurantTable({
   restaurantName,
   categoryName,
 }: RestaurantTableProps) {
+  const { restaurants } = useFetchRestaurants({ restaurantName, categoryName });
+
   return (
     <div>
       <table>
@@ -18,66 +26,9 @@ export default function RestaurantTable({
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>짜장면</td>
-            <td>중식</td>
-            <td>
-              <ul>
-                <li
-                  style={{
-                    display: 'flex',
-                    paddingBlock: '.5rem',
-                  }}
-                >
-                  <span style={{ margin: '0 auto' }}>짜장면(8,000원)</span>
-                  <button style={{ marginLeft: '.5rem' }} type='button'>
-                    선택
-                  </button>
-                </li>
-                <li
-                  style={{
-                    display: 'flex',
-                    paddingBlock: '.5rem',
-                  }}
-                >
-                  <span style={{ margin: '0 auto' }}>짜장면(8,000원)</span>
-                  <button style={{ marginLeft: '.5rem' }} type='button'>
-                    선택
-                  </button>
-                </li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>짜장면</td>
-            <td>중식</td>
-            <td>
-              <ul>
-                <li
-                  style={{
-                    display: 'flex',
-                    paddingBlock: '.5rem',
-                  }}
-                >
-                  <span style={{ margin: '0 auto' }}>짜장면(8,000원)</span>
-                  <button style={{ marginLeft: '.5rem' }} type='button'>
-                    선택
-                  </button>
-                </li>
-                <li
-                  style={{
-                    display: 'flex',
-                    paddingBlock: '.5rem',
-                  }}
-                >
-                  <span style={{ margin: '0 auto' }}>짜장면(8,000원)</span>
-                  <button style={{ marginLeft: '.5rem' }} type='button'>
-                    선택
-                  </button>
-                </li>
-              </ul>
-            </td>
-          </tr>
+          {restaurants.map((restaurant: Restaurant) => (
+            <RestaurantTableRow key={restaurant.id} restaurant={restaurant} />
+          ))}
         </tbody>
       </table>
     </div>
