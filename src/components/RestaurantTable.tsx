@@ -5,15 +5,15 @@ import useFetchRestaurants from '../hooks/useFetchRestaurants';
 import Restaurant from '../types/RestaurantType';
 
 type RestaurantTableProps = {
-  restaurantName: string;
   categoryName: string;
+  restaurantName: string;
 };
 
 export default function RestaurantTable({
-  restaurantName,
   categoryName,
+  restaurantName,
 }: RestaurantTableProps) {
-  const { restaurants } = useFetchRestaurants({ restaurantName, categoryName });
+  const { restaurants } = useFetchRestaurants({ categoryName, restaurantName });
 
   return (
     <div>
