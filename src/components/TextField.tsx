@@ -8,7 +8,7 @@ type TextFieldProps = {
 
 export default function TextField({ label, placeholder }: TextFieldProps) {
   const [, current] = useFieldRef('textfield');
-  const [text, handleChange] = useTextField();
+  const [text, setText] = useTextField();
 
   return (
     <div
@@ -25,7 +25,7 @@ export default function TextField({ label, placeholder }: TextFieldProps) {
         placeholder={placeholder || ''}
         id={current}
         value={text}
-        onChange={handleChange}
+        onChange={setText}
       />
     </div>
   );
