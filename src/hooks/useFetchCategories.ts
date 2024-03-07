@@ -15,7 +15,7 @@ function useFetchCategories(): useFetchCategoriesReturnType {
 
   useEffect(() => {
     const getCategories = async () => {
-      const data = await api.readAll();
+      const data: Category[] = await api.read();
       setCategories(data);
     };
     getCategories();
