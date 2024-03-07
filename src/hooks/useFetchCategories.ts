@@ -14,11 +14,12 @@ function useFetchCategories(): useFetchCategoriesReturnType {
   const api = new CategoryAPI();
 
   useEffect(() => {
-    const getCategories = async () => {
+    const fetchData = async () => {
       const data: Category[] = await api.read();
       setCategories(data);
     };
-    getCategories();
+
+    fetchData();
   }, []);
 
   return { categories };
