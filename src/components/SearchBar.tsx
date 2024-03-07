@@ -1,12 +1,9 @@
+import TextField from './TextField';
+
 export default function SearchBar() {
   return (
     <div>
-      <div>
-        <div>
-          <label htmlFor='search'>검색</label>
-          <input type='text' id='search' placeholder='식당 이름' />
-        </div>
-      </div>
+      <TextField label='검색' placeholder='식당 이름...' />
       <ul
         style={{
           display: 'flex',
