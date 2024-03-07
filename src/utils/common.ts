@@ -12,8 +12,8 @@ export function normalize(value: string) {
  * @param value number 형식의 문자열
  * @returns 화폐형식의 문자열 값을 리턴한다. 예) 9000 -> 9,000
  */
-export function moneyformat(value: string) {
-  return value;
+export function moneyformat(value: number) {
+  return new Intl.NumberFormat().format(value);
 }
 
 /**
