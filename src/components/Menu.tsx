@@ -1,4 +1,5 @@
 import MenuItem from './MenuItem';
+import useCartStore from '../hooks/useCartStore';
 
 import Food from '../types/FoodType';
 
@@ -7,7 +8,11 @@ type MenuProps = {
 };
 
 export default function Menu({ menu }: MenuProps) {
-  const handleClick = () => 0;
+  const [, cartStore] = useCartStore();
+
+  const handleClick = (item: Food) => {
+    cartStore.addItem({ foodId: item.id, name: item.name, price: item.price });
+  };
 
   return (
     <ul>
@@ -17,7 +22,7 @@ export default function Menu({ menu }: MenuProps) {
             style={{ marginLeft: '.5rem' }}
             type='button'
             name={`#${menuItem.name}`}
-            onClick={handleClick}
+            onClick={() => handleClick(menuItem)}
           >
             선택
           </button>
