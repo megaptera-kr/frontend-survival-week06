@@ -1,8 +1,7 @@
 import MenuItem from './MenuItem';
+import OrderButtonInCart from './OrderButtonInCart';
 
 import useCartStore from '../hooks/useCartStore';
-
-import { moneyformat } from '../utils/common';
 
 export default function Cart() {
   const [snapshot, cartStore] = useCartStore();
@@ -33,10 +32,7 @@ export default function Cart() {
           ))}
         </ul>
       )}
-
-      <button type='button' value={totalPrice}>
-        합계: {moneyformat(totalPrice)}원 주문
-      </button>
+      <OrderButtonInCart cartItems={cartItems} totalPrice={totalPrice} />
     </div>
   );
 }

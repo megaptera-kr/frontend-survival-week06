@@ -9,7 +9,6 @@ function OrderController(app: Express) {
 
     const orderId = Date.now().toString();
 
-    // totalPrice 검증 코드 추가
     const response: OrderResponse = {
       id: orderId,
       menu: order.menu,
