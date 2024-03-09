@@ -5,7 +5,7 @@ import RestaurantRow from './RestaurantRow';
 
 import restaurants from '../../fixtures/restaurants';
 
-describe('Restaurant', () => {
+describe('RestaurantRow', () => {
   it('renders Restaurant information', () => {
     render(
       <table>
