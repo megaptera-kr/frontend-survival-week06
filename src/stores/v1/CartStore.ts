@@ -42,8 +42,8 @@ class CartStore extends BaseStore<CartStoreSnapshot> {
     this.update();
   }
 
-  removeAllItems() {
-    this.cartModel = this.cartModel.removeAllItems();
+  clear() {
+    this.cartModel = this.cartModel.clear();
     this.update();
   }
 }

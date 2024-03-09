@@ -31,7 +31,7 @@ export default function OrderButtonInCart({
 
     const receipt: ReceiptType = await api.create({ cartItems, totalPrice });
     if (receipt.id) {
-      cartStore.removeAllItems();
+      cartStore.clear();
       receiptStore.addItem(receipt);
     }
   };

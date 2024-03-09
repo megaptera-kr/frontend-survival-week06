@@ -127,7 +127,7 @@ describe('CartModel', () => {
   context('CartModel removeAllItem 메서드를 사용하여, ', () => {
     context('빈 배열일 때 items를 삭제한다면, ', () => {
       it('빈배열을 리턴한다.', () => {
-        cartModel = cartModel.removeAllItems();
+        cartModel = cartModel.clear();
         expect(cartModel.items).toHaveLength(0);
         expect(cartModel.items).toEqual([]);
       });
@@ -142,7 +142,7 @@ describe('CartModel', () => {
           ...theFirstFoodElement,
         });
 
-        cartModel = cartModel.removeAllItems();
+        cartModel = cartModel.clear();
         expect(cartModel.items).toHaveLength(0);
         expect(cartModel.items).toEqual([]);
       });

@@ -43,7 +43,7 @@ class CartModel {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  removeAllItems() {
+  clear() {
     return new CartModel([]);
   }
 

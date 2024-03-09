@@ -5,15 +5,13 @@ import CartItemModel from '../../models/CartItemModel';
 import fixtures from '../../../fixtures';
 
 test('CartStore', () => {
-  const cartStore = new CartStore();
-
   const handleChange = jest.fn();
-
-  cartStore.addListener(handleChange);
-
   const { foods } = fixtures;
   const food = foods[0];
 
+  const cartStore = new CartStore();
+
+  cartStore.addListener(handleChange);
   cartStore.addItem({ ...food });
 
   expect(handleChange).toBeCalled();
