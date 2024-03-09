@@ -2,7 +2,7 @@ import { singleton } from 'tsyringe';
 
 import CartItemModel from '../models/CartItemModel';
 
-import OrderResponse from '../types/OrderResponseType';
+import ReceiptType from '../types/ReceiptType';
 
 @singleton()
 class OrderAPI {
@@ -14,7 +14,7 @@ class OrderAPI {
   }: {
     cartItems: CartItemModel[];
     totalPrice: number;
-  }): Promise<OrderResponse> {
+  }): Promise<ReceiptType> {
     const body = {
       menu: cartItems.map((cartItem: CartItemModel) => cartItem.food),
       totalPrice,

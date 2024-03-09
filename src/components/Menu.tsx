@@ -11,7 +11,8 @@ export default function Menu({ menu }: MenuProps) {
   const [, cartStore] = useCartStore();
 
   const handleClick = (item: Food) => {
-    cartStore.addItem({ foodId: item.id, name: item.name, price: item.price });
+    const { id, name, price } = item;
+    cartStore.addItem({ id, name, price });
   };
 
   return (

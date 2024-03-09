@@ -1,9 +1,9 @@
 import Food from './FoodType';
 
-type OrderResponse = {
+type Receipt = {
   id: string;
   menu: Food[];
   totalPrice: number;
 };
 
-export default OrderResponse;
+export default Receipt;

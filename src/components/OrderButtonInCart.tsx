@@ -3,7 +3,7 @@ import CartItemModel from '../models/CartItemModel';
 import OrderAPI from '../apis/order.api';
 import { moneyformat } from '../utils/common';
 
-import OrderResponse from '../types/OrderResponseType';
+import ReceiptType from '../types/ReceiptType';
 
 type OrderButtonInCartProps = {
   cartItems: CartItemModel[];
@@ -17,7 +17,7 @@ export default function OrderButtonInCart({
   totalPrice,
 }: OrderButtonInCartProps) {
   const handleClick = async () => {
-    const response: OrderResponse = await api.create({ cartItems, totalPrice });
+    const response: ReceiptType = await api.create({ cartItems, totalPrice });
   };
 
   return (

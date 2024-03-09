@@ -13,7 +13,7 @@ export type CartStoreSnapshot = {
 
 @singleton()
 class CartStore extends BaseStore<CartStoreSnapshot> {
-  private cartmodel = new CartModel();
+  private cartModel = new CartModel();
 
   constructor() {
     super();
@@ -22,8 +22,8 @@ class CartStore extends BaseStore<CartStoreSnapshot> {
 
   takeSnapshot() {
     this.snapshot = {
-      items: this.cartmodel.items,
-      totalPrice: this.cartmodel.totalPrice,
+      items: this.cartModel.items,
+      totalPrice: this.cartModel.totalPrice,
     };
   }
 
@@ -33,17 +33,17 @@ class CartStore extends BaseStore<CartStoreSnapshot> {
   }
 
   addItem({ id, name, price }: Food) {
-    this.cartmodel = this.cartmodel.addItem({ id, name, price });
+    this.cartModel = this.cartModel.addItem({ id, name, price });
     this.update();
   }
 
   removeItem(cartId: number) {
-    this.cartmodel = this.cartmodel.removeItem(cartId);
+    this.cartModel = this.cartModel.removeItem(cartId);
     this.update();
   }
 
   removeAllItems() {
-    this.cartmodel = this.cartmodel.removeAllItems();
+    this.cartModel = this.cartModel.removeAllItems();
     this.update();
   }
 }
