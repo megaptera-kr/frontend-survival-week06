@@ -1,6 +1,10 @@
 import CartItemModel from '../models/CartItemModel';
 
 import OrderAPI from '../apis/order.api';
+
+import useCartStore from '../hooks/useCartStore';
+import useReceiptStore from '../hooks/useReceiptStore';
+
 import { moneyformat } from '../utils/common';
 
 import ReceiptType from '../types/ReceiptType';
@@ -16,8 +20,20 @@ export default function OrderButtonInCart({
   cartItems,
   totalPrice,
 }: OrderButtonInCartProps) {
+  // TODO: make useOrderHook
+  const [, cartStore] = useCartStore();
+  const [, receiptStore] = useReceiptStore();
+
   const handleClick = async () => {
-    const response: ReceiptType = await api.create({ cartItems, totalPrice });
+    if (cartItems.length === 0 || totalPrice === 0) {
+      return;
+    }
+
+    const receipt: ReceiptType = await api.create({ cartItems, totalPrice });
+    if (receipt.id) {
+      cartStore.removeAllItems();
+      receiptStore.addItem(receipt);
+    }
   };
 
   return (
