@@ -17,9 +17,15 @@ export default function RestaurantTable({ restaurants }: RestaurantTableProps) {
         </tr>
       </thead>
       <tbody>
-        {restaurants.map((restaurant) => (
-          <RestaurantRow key={restaurant.name} restaurant={restaurant} />
-        ))}
+        {!restaurants.length ? (
+          <tr>
+            <td colSpan={3}>일치하는 식당 목록이 없습니다.</td>
+          </tr>
+        ) : (
+          restaurants.map((restaurant) => (
+            <RestaurantRow key={restaurant.name} restaurant={restaurant} />
+          ))
+        )}
       </tbody>
     </table>
   );
