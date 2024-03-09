@@ -8,7 +8,7 @@ describe('FilterableRestaurantTable', () => {
 
     await waitFor(() => {
       screen.getByText(/메가반점/);
-      screen.getByText(/일식/);
+      screen.getByText(/전체/);
       screen.getByText('김밥(3,000원)');
       screen.getByText('혹등고래카레');
     });
