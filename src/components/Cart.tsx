@@ -13,7 +13,7 @@ export default function Cart() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <h2>주문 바구니</h2>
+      <h2>점심 바구니</h2>
       {!cartItems.length ? (
         <p>선택한 메뉴가 없습니다.</p>
       ) : (
