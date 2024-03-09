@@ -1,6 +1,7 @@
 import { singleton } from 'tsyringe';
 
 import Restaurant from '../types/RestaurantType';
+import { normalize } from '../utils/common';
 
 type QueryStringType = {
   restaurantName: string;
@@ -21,7 +22,7 @@ class RestaurantAPI {
   }: QueryStringType): Promise<Restaurant[]> {
     const params = new URLSearchParams();
     params.append('categoryName', categoryName);
-    params.append('restaurantName', restaurantName.trim().toLowerCase());
+    params.append('restaurantName', normalize(restaurantName));
     this.url.search = params.toString();
 
     const response = await fetch(this.url);

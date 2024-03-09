@@ -4,7 +4,7 @@
  * @returns 처음과 끝에 공백이 없는 소문자 문자열
  */
 export function normalize(value: string) {
-  return value;
+  return value.trim().toLowerCase();
 }
 
 /**
@@ -14,21 +14,4 @@ export function normalize(value: string) {
  */
 export function moneyformat(value: number) {
   return new Intl.NumberFormat().format(value);
-}
-
-/**
- * 정수 배열 안의 모든 원소의 합을 리턴한다.
- * @param nums 정수 배열
- * @returns 정수 배열 안의 합인 정수 값
- */
-export function sum(nums: number[]): number {
-  return 0;
-}
-
-/**
- * 메뉴아이템 리스트에서 각 메뉴의 가격의 합을 계산하여 리턴한다.
- * @returns 메뉴의 총합
- */
-export function calculateTotalPrice() {
-  return 0;
 }

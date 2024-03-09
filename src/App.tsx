@@ -14,7 +14,7 @@ export default function App() {
   useInterval(
     () => {
       if (receipt.id) {
-        receiptStore.clearItems();
+        receiptStore.clear();
       }
     },
     receipt.id ? 5000 : null,

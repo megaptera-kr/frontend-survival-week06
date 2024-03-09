@@ -20,7 +20,7 @@ class ReceiptPrinterModel {
     return new ReceiptPrinterModel(item);
   }
 
-  clearItem() {
+  clear() {
     return new ReceiptPrinterModel(this.empty);
   }
 }

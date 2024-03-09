@@ -39,19 +39,19 @@ describe('ReceiptPrinterModel', () => {
     });
   });
 
-  context('clearItems 은', () => {
+  context('clear 은', () => {
     it('아이템을 초기화시켜서 {} 로 만든다..', () => {
-      receiptPrinterModel.clearItem();
+      receiptPrinterModel.clear();
       expect(receiptPrinterModel.item).toEqual({});
     });
   });
 
-  context('clearItems 은(item 값이 있는 경우)', () => {
+  context('clear 은(item 값이 있는 경우)', () => {
     it('아이템을 초기화시켜서 {} 로 만든다..', () => {
       receiptPrinterModel = receiptPrinterModel.addItem(receiptModel);
       expect(receiptPrinterModel.item).toEqual(receiptModel);
 
-      receiptPrinterModel = receiptPrinterModel.clearItem();
+      receiptPrinterModel = receiptPrinterModel.clear();
       expect(receiptPrinterModel.item).toEqual({});
     });
   });

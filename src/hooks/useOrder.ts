@@ -18,7 +18,7 @@ function useOrder({ cartItems, totalPrice }: useOrderParamType) {
   const [, receiptStore] = useReceiptStore();
 
   const handleClick = async () => {
-    if (cartItems.length === 0 || totalPrice === 0) {
+    if (!cartItems.length || totalPrice <= 0) {
       return;
     }
 

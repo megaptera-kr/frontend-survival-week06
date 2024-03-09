@@ -35,8 +35,8 @@ class ReceiptStore extends BaseStore<ReceiptStoreSnapshot> {
     this.update();
   }
 
-  clearItems() {
-    this.receiptPrinterModel = this.receiptPrinterModel.clearItem();
+  clear() {
+    this.receiptPrinterModel = this.receiptPrinterModel.clear();
     this.update();
   }
 }

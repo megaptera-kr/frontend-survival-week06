@@ -1,4 +1,15 @@
-import { moneyformat } from './common';
+import { normalize, moneyformat } from './common';
+
+test('normalize 함수는 정수 값을 받아, 화폐 형식의 문자열 값을 리턴', () => {
+  expect(normalize('')).toBe('');
+  expect(normalize(' ')).toBe('');
+  expect(normalize('  ')).toBe('');
+  expect(normalize('Abc ')).toBe('abc');
+  expect(normalize(' Abc')).toBe('abc');
+  expect(normalize(' Abc ')).toBe('abc');
+  expect(normalize(' A bc ')).toBe('a bc');
+  expect(normalize(' 한글로 검색 ')).toBe('한글로 검색');
+});
 
 test('moneyformat 함수는 정수 값을 받아, 화폐 형식의 문자열 값을 리턴', () => {
   expect(moneyformat(0)).toBe('0');
