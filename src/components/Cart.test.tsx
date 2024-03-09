@@ -19,7 +19,7 @@ describe('ComponentTest: Cart', () => {
     it('메뉴와 취소 버튼이 보인다.', () => {
       render(<Cart />);
 
-      screen.getByText('주문 바구니');
+      screen.getByText('점심 바구니');
       screen.getAllByText(/짜장면/);
       screen.getAllByRole('button', { name: '취소' });
       screen.getByRole('button', { name: regex });
