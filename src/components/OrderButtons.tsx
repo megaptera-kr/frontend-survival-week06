@@ -13,7 +13,9 @@ export default function OrderButtons() {
       <button type="button" onClick={() => removeItems()}>
         취소
       </button>
-      <button type="button">주문하기</button>
+      <button type="button" onClick={() => removeItems()}>
+        주문하기
+      </button>
     </div>
   );
 }
