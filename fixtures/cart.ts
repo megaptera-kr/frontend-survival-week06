@@ -1,4 +1,4 @@
-const menus = [
+const cart = [
   {
     id: 'MENU_01',
     name: '짜장면',
@@ -11,4 +11,4 @@ const menus = [
   },
 ];
 
-export default menus;
+export default cart;

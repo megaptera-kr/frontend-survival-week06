@@ -1,7 +1,7 @@
-import menus from './menus';
+import cart from './cart';
 import restaurants from './restaurants';
 
 export default {
-  menus,
+  cart,
   restaurants,
 };

@@ -18,7 +18,7 @@ export default function CartContainer() {
         개
       </h3>
       <h3>
-        총 주문 금액:
+        총 결제 예상금액:
         {totalPrice.toLocaleString()}
         원
       </h3>
