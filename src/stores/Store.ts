@@ -23,6 +23,11 @@ export default class Store {
       : this.updateItem(index, item);
   }
 
+  removeAllItems() {
+    this.items = [];
+    this.publish();
+  }
+
   publish() {
     this.listeners.forEach((listener) => {
       listener();
