@@ -16,11 +16,9 @@ export default class Store {
   listeners = new Set<Listener>();
 
   addItem(item :Item) {
-    const index = this.items.findIndex((i) => i.id === item.id);
+    // const index = this.items.findIndex((i) => i.id === item.id);
 
-    return index < 0
-      ? this.insertItem(item)
-      : this.updateItem(index, item);
+    return this.insertItem(item);
   }
 
   removeAllItems() {
