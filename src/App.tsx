@@ -1,5 +1,4 @@
 import Cart from './components/Cart';
-import CartPrint from './components/CartPrint';
 import FilterableRestaurantTable from './components/FilterableRestaurantTable';
 
 export default function App() {
