@@ -9,7 +9,7 @@ type FilterConditions = {
   filterCategory :string;
 }
 
-export default function filterRestaurant(
+export default function filterRestaurants(
   restaurants : Restaurant[],
   { filterText, filterCategory } : FilterConditions,
 ) : Restaurant[] {

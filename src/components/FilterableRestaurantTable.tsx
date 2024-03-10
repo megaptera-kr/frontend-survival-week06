@@ -4,8 +4,9 @@ import SearchBar from './SearchBar';
 import RestaurantTable from './RestaurantTable';
 
 import useFetchRestaurant from '../hooks/useFetchRestaurant';
-import filterRestaurant from '../utils/filterRestaurant';
+
 import extractCategories from '../utils/extractCategories';
+import filterRestaurants from '../utils/filterRestaurants';
 
 export default function FilterableRestaurantTable() {
   const restaurants = useFetchRestaurant();
@@ -14,7 +15,7 @@ export default function FilterableRestaurantTable() {
   const [filterCategory, setFilterCategory] = useState('전체');
 
   const filterCategories = extractCategories(restaurants);
-  const filteredRestaurant = filterRestaurant(restaurants, {
+  const filteredRestaurant = filterRestaurants(restaurants, {
     filterText,
     filterCategory,
   });

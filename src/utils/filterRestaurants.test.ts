@@ -1,13 +1,13 @@
-import filterRestaurant from './filterRestaurant';
+import filterRestaurants from './filterRestaurants';
 
 import restaurants from '../../fixtures/restaurants';
 
 const context = describe;
 
-describe('filterRestaurant', () => {
+describe('filterRestaurants', () => {
   context('with “전체” category', () => {
     it('returns all restaurants', () => {
-      const filteredRestaurants = filterRestaurant(
+      const filteredRestaurants = filterRestaurants(
         restaurants,
         { filterText: '', filterCategory: '전체' },
       );
@@ -16,12 +16,23 @@ describe('filterRestaurant', () => {
     });
   });
 
+  context('with “한식” category', () => {
+    it('returns 한식 restaurants', () => {
+      const filteredRestaurants = filterRestaurants(
+        restaurants,
+        { filterText: '', filterCategory: '한식' },
+      );
+
+      expect(filteredRestaurants.length).toBe(1);
+    });
+  });
+
   context('without filter text', () => {
     it('renders filtered restaurant', () => {
       const filterText = '테라김밥';
       const filterCategory = '전체';
 
-      const filteredRestaurants = filterRestaurant(restaurants, { filterText, filterCategory });
+      const filteredRestaurants = filterRestaurants(restaurants, { filterText, filterCategory });
 
       expect(filteredRestaurants.length).toBe(0);
     });
@@ -32,7 +43,7 @@ describe('filterRestaurant', () => {
       const filterText = '메리김밥';
       const filterCategory = '전체';
 
-      const filteredRestaurants = filterRestaurant(restaurants, { filterText, filterCategory });
+      const filteredRestaurants = filterRestaurants(restaurants, { filterText, filterCategory });
 
       const filteredRestaurant = filteredRestaurants[0];
 
