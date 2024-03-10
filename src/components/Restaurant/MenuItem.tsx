@@ -7,7 +7,6 @@ interface MenuItemProps extends HTMLAttributes<Element> {
 }
 
 export default function MenuItem({ menu, children }: MenuItemProps) {
-  const { name, price } = menu;
   return (
     <li key={menu.id} style={{ display: 'flex', paddingBlock: '10px' }}>
       {children}
