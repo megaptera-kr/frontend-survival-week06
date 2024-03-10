@@ -6,7 +6,6 @@ type Item = {
   id : string;
   name : string;
   price : number;
-  quantity : number;
 }
 
 @singleton()
@@ -17,8 +16,13 @@ export default class Store {
 
   addItem(item :Item) {
     // const index = this.items.findIndex((i) => i.id === item.id);
-
     return this.insertItem(item);
+  }
+
+  removeItem(index :number) {
+    const filterItems = this.items.filter((_, i) => i !== index);
+    this.items = filterItems;
+    this.publish();
   }
 
   removeAllItems() {
@@ -45,13 +49,13 @@ export default class Store {
     this.publish();
   }
 
-  updateItem(index:number, item : Item) {
-    const existingQuantity = this.items[index].quantity;
+  // updateItem(index:number, item : Item) {
+  //   const existingQuantity = this.items[index].quantity;
 
-    this.items = [
-      ...this.items.slice(0, index),
-      { ...item, quantity: item.quantity + existingQuantity },
-      ...this.items.slice(index + 1)];
-    this.publish();
-  }
+  //   this.items = [
+  //     ...this.items.slice(0, index),
+  //     { ...item, quantity: item.quantity + existingQuantity },
+  //     ...this.items.slice(index + 1)];
+  //   this.publish();
+  // }
 }

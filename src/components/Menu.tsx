@@ -13,7 +13,8 @@ export default function Menu({ menu }: MenuProps) {
 
   const AddItem = (food: Food) => {
     // TODO: CartStore 얻기
-    store.addItem({ ...food, quantity: 1 });
+    // store.addItem({ ...food, quantity: 1 });
+    store.addItem(food);
   };
 
   if (!menu.length) {
@@ -27,7 +28,11 @@ export default function Menu({ menu }: MenuProps) {
 
         return (
           <MenuItem key={key} food={food}>
-            <button type="button" onClick={() => AddItem(food)}>
+            <button
+              type="button"
+              name={`${food.name}`}
+              onClick={() => AddItem(food)}
+            >
               장바구니 담기
             </button>
           </MenuItem>
