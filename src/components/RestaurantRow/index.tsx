@@ -1,3 +1,6 @@
+import { MouseEvent } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
+import { OrdersType } from '../../types/ordersType';
 import { Restaurant } from '../../types/restaurant';
 import convertKRW from '../../utils/convertKRW/convertKRW';
 
@@ -6,6 +9,26 @@ type RestaurantRowProps = {
 }
 
 function RestaurantRow({ restaurant }:RestaurantRowProps) {
+  const [, setOrders] = useLocalStorage<OrdersType>(
+    'orders'
+    , { menu: [], totalPrice: 0 },
+  );
+
+  const addOrder = (event:MouseEvent<HTMLButtonElement>) => {
+    const { name } = event.currentTarget;
+    const [foodName, foodPrice] = name.split('.');
+
+    setOrders((prev) => (
+      {
+        ...prev,
+        menu: [...prev.menu, {
+          id: Date.now().toString(),
+          name: foodName,
+          price: Number(foodPrice),
+        }],
+        totalPrice: prev.totalPrice + Number(foodPrice),
+      }));
+  };
   return (
     <tr>
       <td>{restaurant.name}</td>
@@ -20,10 +43,15 @@ function RestaurantRow({ restaurant }:RestaurantRowProps) {
                 {convertKRW(food.price)}
                 )
               </span>
-              <button type="button">선택</button>
+              <button
+                type="button"
+                name={`${food.name}.${food.price}`}
+                onClick={addOrder}
+              >
+                선택
+              </button>
             </li>
           ))}
-
         </ul>
       </td>
     </tr>
