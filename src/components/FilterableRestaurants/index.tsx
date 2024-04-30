@@ -17,7 +17,7 @@ function FilterableRestaurants() {
 
   const filterRestaurants = filterByQuery(
     restaurants,
-    { text: filterText, category: selectedCategory },
+    { text: filterText.trim(), category: selectedCategory },
   );
   return (
     <div>
