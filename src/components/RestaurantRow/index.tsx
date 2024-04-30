@@ -3,6 +3,7 @@ import { useLocalStorage } from 'usehooks-ts';
 import { OrdersType } from '../../types/ordersType';
 import { Restaurant } from '../../types/restaurant';
 import convertKRW from '../../utils/convertKRW/convertKRW';
+import { initOrders } from '../Orders';
 
 type RestaurantRowProps = {
   restaurant:Restaurant
@@ -11,7 +12,7 @@ type RestaurantRowProps = {
 function RestaurantRow({ restaurant }:RestaurantRowProps) {
   const [, setOrders] = useLocalStorage<OrdersType>(
     'orders'
-    , { menu: [], totalPrice: 0 },
+    , initOrders,
   );
 
   const addOrder = (event:MouseEvent<HTMLButtonElement>) => {
@@ -34,21 +35,16 @@ function RestaurantRow({ restaurant }:RestaurantRowProps) {
       <td>{restaurant.name}</td>
       <td>{restaurant.category}</td>
       <td>
-        <ul style={{ listStyle: 'none' }}>
+        <ul>
           {restaurant.menu.map((food) => (
             <li key={food.id}>
-              <span>
-                {food.name}
-                (
-                {convertKRW(food.price)}
-                )
-              </span>
               <button
                 type="button"
                 name={`${food.name}.${food.price}`}
                 onClick={addOrder}
               >
-                선택
+                {food.name}
+                {convertKRW(food.price)}
               </button>
             </li>
           ))}
