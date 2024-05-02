@@ -7,7 +7,7 @@ const initCart: OrdersType = { menu: [], totalPrice: 0 };
 
 @singleton()
 @Store()
-export default class CartStore {
+class CartStore {
   cart:OrdersType = initCart;
 
   @Action()
@@ -32,3 +32,5 @@ export default class CartStore {
     this.cart = initCart;
   }
 }
+
+export default CartStore;
