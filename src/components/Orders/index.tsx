@@ -1,48 +1,40 @@
 import { FormEvent, MouseEvent } from 'react';
-import { useLocalStorage, useReadLocalStorage } from 'usehooks-ts';
+import useCartStore from '../../hooks/useCartStore';
 import { OrdersType } from '../../types/ordersType';
 import convertKRW from '../../utils/convertKRW/convertKRW';
 
 export const initOrders: OrdersType = { menu: [], totalPrice: 0 };
 
 function Orders() {
-  const [orders, setOrders] = useLocalStorage<OrdersType>(
-    'orders',
-    useReadLocalStorage('orders') ?? initOrders,
-  );
+  const [{ cart }, cartStores] = useCartStore();
 
   const removeOrder = (event:MouseEvent<HTMLButtonElement>) => {
     const { id } = event.currentTarget.dataset;
 
-    const filteredMenu = orders.menu.filter((food) => food.id !== id);
-    const newTotalPrice = filteredMenu.reduce((acc:number, food) => acc + food.price, 0);
-
-    setOrders((prev) => ({
-      ...prev,
-      menu: filteredMenu,
-      totalPrice: newTotalPrice,
-    }));
+    if (!id) { return; }
+    cartStores.removeCart(id);
   };
 
   const submitOrders = (event:FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setOrders(initOrders);
+    cartStores.clearCart();
   };
 
   const cancelOrders = () => {
-    setOrders(initOrders);
+    cartStores.clearCart();
   };
 
+  // console.log('====cartState: ', cartState);
   return (
     <div>
       <h2>
         주문내역
-        {orders?.menu.length}
+        {cart.menu.length}
         개
       </h2>
-      <p>{`총 결제 예상 금액 ${convertKRW(orders.totalPrice)}`}</p>
+      <p>{`총 결제 예상 금액 ${convertKRW(cart.totalPrice)}`}</p>
       <ul style={{ listStyle: 'none' }}>
-        {orders?.menu.map((food) => (
+        {cart.menu.map((food) => (
           <li key={food.id}>
             <span>
               {food.name}
