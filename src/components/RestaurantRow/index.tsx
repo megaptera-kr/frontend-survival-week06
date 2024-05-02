@@ -1,35 +1,27 @@
 import { MouseEvent } from 'react';
-import { useLocalStorage } from 'usehooks-ts';
-import { OrdersType } from '../../types/ordersType';
+import useCartStore from '../../hooks/useCartStore';
 import { Restaurant } from '../../types/restaurant';
 import convertKRW from '../../utils/convertKRW/convertKRW';
-import { initOrders } from '../Orders';
 
 type RestaurantRowProps = {
   restaurant:Restaurant
 }
 
 function RestaurantRow({ restaurant }:RestaurantRowProps) {
-  const [, setOrders] = useLocalStorage<OrdersType>(
-    'orders'
-    , initOrders,
-  );
+  const [, cartStores] = useCartStore();
 
   const addOrder = (event:MouseEvent<HTMLButtonElement>) => {
     const { name } = event.currentTarget;
     const [foodName, foodPrice] = name.split('.');
+    const newMenu = {
+      id: Date.now().toString(),
+      name: foodName,
+      price: Number(foodPrice),
+    };
 
-    setOrders((prev) => (
-      {
-        ...prev,
-        menu: [...prev.menu, {
-          id: Date.now().toString(),
-          name: foodName,
-          price: Number(foodPrice),
-        }],
-        totalPrice: prev.totalPrice + Number(foodPrice),
-      }));
+    cartStores.addCart(newMenu);
   };
+
   return (
     <tr>
       <td>{restaurant.name}</td>
