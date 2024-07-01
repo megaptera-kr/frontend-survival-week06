@@ -1,5 +1,5 @@
 {
-  "name": "frontend-survival-week06-answer",
+  "name": "frontend-survival-week06",
   "version": "1.0.0",
   "description": "프론트엔드 생존코스 6주차 과제",
   "source": "index.html",
@@ -49,6 +49,7 @@
     "playwright": "^1.30.0",
     "process": "^0.11.10",
     "servor": "^4.0.2",
+    "ts-node": "^10.9.2",
     "typescript": "^4.9.5",
     "whatwg-fetch": "^3.6.2"
   },
